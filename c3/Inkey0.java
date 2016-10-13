@@ -1,0 +1,21 @@
+class Inkey0 {
+	public static void main (String args[]) throws java.io.IOException {
+		char chinput;
+		int ichange;
+		
+		for (;;){
+			
+			System.out.print("input a character -> ");
+			//inkey
+			do {
+				chinput = (char) System.in.read();
+			}while ((chinput == '\n') | (chinput == '\r'));
+			//end inkey
+			System.out.println("character input is "+chinput);
+		if (chinput == '.')break;
+		ichange = (byte) chinput;
+		
+		System.out.println("the asc value is " + ichange);
+	}//end for
+}
+}

@@ -1,0 +1,117 @@
+listing 1
+<applet code="ImageMenu" width=140 height=180 hspace=0 vspace=0>
+<param name="img" value="menu.jpg">
+<param name="urlPrefix"
+           value="http://www.osborne.com/">
+<param name="urlList"
+           value="pressroom/pressroom.shtml+aboutus/aboutus.shtml+downloads/downloads.shtml+errata/errata.shtml">
+<param name="targetList"
+           value="_self+_self+_self+_self+_self+_self">
+<param name="urlSuffix" value="">
+</applet>
+
+listing 2
+import java.awt.* ;
+import java.awt.event.*;
+import java.applet.*;
+import java.util.*;
+import java.net.*;
+
+public class ImageMenu extends Applet {
+  Dimension d;
+
+  Image img, off;
+  Graphics offg;
+  int MAXITEMS = 64;
+  String url[] = new String[MAXITEMS];
+  String target[] = new String[MAXITEMS];
+  String urlPrefix, urlSuffix;
+  int selectedCell = -1;
+  int oldCell = -1;
+  int cellH;
+  int cells;
+
+  public void init() {
+    d = getSize();
+    urlPrefix = getParameter("urlPrefix");
+    urlSuffix = getParameter("urlSuffix");
+    StringTokenizer st;
+    st = new StringTokenizer(getParameter("urlList"), "+");
+    int i=0;
+    while(st.hasMoreTokens() && i < MAXITEMS)
+        url[i++] = st.nextToken();
+    cells = i;
+    cellH = d.height/cells;
+    st = new StringTokenizer(getParameter("targetList"), "+");
+    i=0;
+    while(st.hasMoreTokens() && i < MAXITEMS)
+      target[i++] = st.nextToken();
+    addMouseListener(new MyMouseAdapter());
+    addMouseMotionListener(new MyMouseMotionAdapter());
+  }
+
+  private void lateInit() {
+    off = createImage(d.width, d.height);
+    try {
+      img = getImage(getDocumentBase(), getParameter("img"));
+      MediaTracker t = new MediaTracker(this);
+      t.addImage(img, 0);
+      t.waitForID(0);
+    } catch(Exception e) {
+      showStatus("error: " + e);
+    }
+  }
+
+  public void update(Graphics g) {}
+  public void paint(Graphics g) {
+    if(off == null)
+      lateInit();
+
+    offg = off.getGraphics();
+    offg.drawImage(img, 0, 0, this);
+    if (selectedCell >= 0) {
+      offg.clipRect(0, selectedCell * cellH, d.width, cellH);
+      offg.drawImage(img, -d.width, 0, this);
+    }
+    g.drawImage(off, 0, 0, this);
+  }
+
+  class MyMouseMotionAdapter extends MouseMotionAdapter {
+    public void mouseDragged(MouseEvent me) {
+      mouseMoved(me);
+    }
+    public void mouseMoved(MouseEvent me) {
+      int y = me.getY();
+      selectedCell = (int)(y/(double)d.height*cells);
+      if (selectedCell != oldCell) {
+        paint(getGraphics());
+        showStatus(urlPrefix + url[selectedCell] + urlSuffix);
+        oldCell = selectedCell;
+      }
+    }
+  }
+
+  class MyMouseAdapter extends MouseAdapter {
+    public void mouseExited(MouseEvent me) {
+      selectedCell = oldCell = -1;
+      paint(getGraphics());
+      showStatus("");
+    }
+
+    public void mouseReleased(MouseEvent me) {
+      //mouseMoved(me);
+      URL u = null;
+      try {
+        u = new URL(urlPrefix + url[selectedCell] + urlSuffix);
+      } catch(Exception e) {
+        showStatus("error: " + e);
+      }
+      if (me.isShiftDown())
+        getAppletContext().showDocument(u, "_blank");
+      else
+        getAppletContext().showDocument(u, target[selectedCell]);
+    }
+  }
+}
+
+

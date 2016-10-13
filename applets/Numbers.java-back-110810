@@ -1,0 +1,229 @@
+import java.awt.*;
+import java.applet.*;
+/*
+<applet code="Numbers" width=800 height=600>
+</applet>
+*/
+
+public class Numbers extends Applet implements Runnable {
+	
+	
+private NumberGrid numbergrid;
+ 
+ //   public void paintComponent(Graphics g) {
+      
+ //     super.paintComponent(g);  // Fill panel with background color, green.
+      
+ //     if (numbergrid == null) {
+            // The first time that paintComponent is called, it assigns
+            // values to the instance variables.
+        
+    //     numbergrid = new NumberGrid();
+         
+   //   }
+      
+  
+ //     numbergrid.draw(g);
+    
+//   } // end drawFrame()
+ 
+
+ 
+ 
+ 
+ 
+ 
+  String msg = " A Simple Moving Banner.";
+  int x,y;
+  Thread t = null;
+  int state;
+  boolean stopFlag;
+
+  // Set colors and initialize thread.
+  public void init() {
+    setBackground(Color.white);
+    setForeground(Color.red);
+     numbergrid = new NumberGrid();
+       
+  }
+
+  // Start thread
+  public void start() {
+    t = new Thread(this);
+    stopFlag = false;
+    t.start();
+  }
+
+  // Entry point for the thread that runs the banner.
+  public void run() {
+    char ch;
+
+    // Display banner 
+    for( ; ; ) {
+      try {
+	     
+	   //   x = (int) (Math.random()*500);
+	//      y = (int)(Math.random()*500);
+        repaint();
+        Thread.sleep(250);
+        ch = msg.charAt(0);
+        msg = msg.substring(1, msg.length());
+        msg += ch;
+        if(stopFlag)
+          break;
+      } catch(InterruptedException e) {}
+    }
+  }
+
+  // Pause the banner.
+  public void stop() {
+    stopFlag = true;
+    t = null;
+  }
+
+  private class LED{
+   
+     LED { // Constructor centers the boat horizontally, 80 pixels from top.
+         //centerX = width/2;
+         //centerY = 80;
+      }
+     // void updateForNewFrame() { // Makes sure boat has not moved off screen.
+    //    if (centerX < 0)
+     //       centerX = 0;
+    //     else if (centerX > width)
+   //         centerX = width;
+    //  }
+      void draw(Graphics g, int rotation){  // Draws the boat at its current location.
+         
+      	   
+      	    int barwidth = 100;
+      //	  g.setColor(Color.YELLOW);
+     //    g.fillRect(left, top, 100, 400);
+         //  bar 1 //////////////////////////////////////////////////
+         c = 0;
+         ytop = top;
+         for (i = 0;i <20;i++){
+         	 g.setColor(new Color(0,0,0));
+         	 g.drawLine(left + c, ytop + i ,left - c + barheight ,ytop + i);
+		  	 if (i < 10){c --  ;}else{c ++;};
+	}
+	
+	  //  bar 2 //////////////////////////////////////////////////
+	
+   } // end LED
+  
+  
+  
+     private class NumberGrid {
+      int centerX, centerY;  // Current position of the center of the boat.
+      NumberGrid() { // Constructor centers the boat horizontally, 80 pixels from top.
+         //centerX = width/2;
+         //centerY = 80;
+      }
+     // void updateForNewFrame() { // Makes sure boat has not moved off screen.
+    //    if (centerX < 0)
+     //       centerX = 0;
+    //     else if (centerX > width)
+   //         centerX = width;
+    //  }
+      void draw(Graphics g, int left, int top, int num) {  // Draws the boat at its current location.
+         
+      	    int top_save = top, i,c;
+      	    int ytop;
+      	    int barheight = 100;
+      	    int barwidth = 100;
+      //	  g.setColor(Color.YELLOW);
+     //    g.fillRect(left, top, 100, 400);
+         //  bar 1 //////////////////////////////////////////////////
+         c = 0;
+         ytop = top;
+         for (i = 0;i <20;i++){
+         	 g.setColor(new Color(0,0,0));
+         	 g.drawLine(left + c, ytop + i ,left - c + barheight ,ytop + i);
+		  	 if (i < 10){c --  ;}else{c ++;};
+	}
+	
+	  //  bar 2 //////////////////////////////////////////////////
+	ytop = top + 80;
+     
+     	 c = 10;
+	for (i = 0;i <20;i++){
+	 g.setColor(new Color(255,0,0));
+         	      	 g.drawLine(left + c, ytop + i ,left - c + barheight, ytop + i);
+         	      	 if (i < 10){c --  ;}else{c ++;};
+	}
+	
+	
+	  //  bar 3 //////////////////////////////////////////////////
+	
+     		ytop = top + 160;
+     		 c = 20;
+	    for (i = 0;i <20;i++){
+         	 g.setColor(new Color(0,255,0));
+         	   //   	 g.drawLine(left + c,ytop + i ,left - c + 100,ytop + i);
+		  	 if (i < 10){c --  ;}else{c ++;};
+	}
+	
+		  //  bar 4 //////////////////////////////////////////////////
+		  ytop = top + 5;
+	     c = 0;
+	    for (i = 0;i < 20 ;i++){
+   g.setColor(new Color(0,0,0));
+         	   //   	 g.drawLine(left + i, ytop + c ,left + i,ytop + 80 - c);
+		  	 if (i < 10){c --  ;}else{c ++;};
+	}
+	
+	 //  bar 5 //////////////////////////////////////////////////
+	 	c = 0;
+	   ytop = top + 95;
+	    for (i = 0;i < 20 ;i++){
+         	 g.setColor(new Color(0,0,255));
+         	      	 g.drawLine(left + i, ytop + c ,left + i, ytop  + 80 - c);
+		  	 if (i < 10){c --  ;}else{c ++;};
+	}
+	
+	 //  bar 6 //////////////////////////////////////////////////
+		  ytop = top + 5;
+	     c = 0;
+	     int yleft = left + 100;
+	    for (i = 0;i < 20 ;i++){
+         	 g.setColor(new Color(127,0,0));
+         	      	 g.drawLine(yleft - i, ytop + c ,yleft - i,ytop + 80 - c);
+		  	 if (i < 10){c --  ;}else{c ++;};
+	} 	
+	
+	 //  bar 6 //////////////////////////////////////////////////
+	 ytop = top + 95;
+	     c = 0;
+	     yleft = left + 100;
+	    for (i = 0;i < 20 ;i++){
+         	 g.setColor(new Color(0,127,0));
+         	      	 g.drawLine(yleft - i, ytop + c ,yleft - i,ytop + 80 - c);
+		  	 if (i < 10){c --  ;}else{c ++;};
+	} 	
+	
+	
+      //   g.fillRoundRect(100 + 40, 100 + 20, 80, 40, 20, 20);
+      }
+   } // end nested class NumberGrid
+
+  
+  
+  public void paint(Graphics g) {
+    int c,k,i, j,rd,oe,be, left, top;
+	double it;
+	java.util.Random generator = new java.util.Random(System.currentTimeMillis());
+	c = 0;
+	left = 100;
+	top = 10;
+	//for (i = 0;i <20;i++){
+	//g.setColor(new Color(255,0,255));
+	//g.drawLine(left + c, top+i ,left -c + 100,top+i);
+	//	c++;
+	//}
+	numbergrid.draw(g,100,100,8);
+   	/////////////////////////
+
+
+  }
+}

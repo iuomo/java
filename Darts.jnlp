@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="http://academicjava.com/animations" href="Darts.jnlp" spec="1.0+">
+	<information>
+		<title>Darts Animation</title>
+		<vendor>Academic Java</vendor>
+		<homepage href="http://academicjava.com/animations"/>
+		<description>Darts</description>
+		<description kind="short">Darts
+		</description>
+	</information>
+	<resources>
+		<j2se version="1.5+"/>
+		<jar eager="true" href="lib/AnimExamples.jar" main="true"/>
+		<jar href="lib/AnimLib.jar"/>
+	</resources>
+	<application-desc main-class="animations.DartsCanvas">
+	</application-desc>
+</jnlp>

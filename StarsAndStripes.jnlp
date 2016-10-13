@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="http://academicjava.com/animations" href="StarsAndStripes.jnlp" spec="1.0+">
+	<information>
+		<title>Stars And Stripes</title>
+		<vendor>Academic Java</vendor>
+		<homepage href="http://academicjava.com/animations"/>
+		<description>A demo of AnimLib that draws the national flag of the USA.</description>
+		<description kind="short">Stars And Stripes
+		</description>
+		<offline-allowed/>
+	</information>
+	<resources>
+		<j2se version="1.5+"/>
+		<jar eager="true" href="lib/AnimExamples.jar" main="true"/>
+		<jar href="lib/AnimLib.jar"/>
+	</resources>
+	<application-desc main-class="animations.StarsAndStripesCanvas">
+	</application-desc>
+</jnlp>

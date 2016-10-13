@@ -1,0 +1,50 @@
+import java.io.*;
+class ReturnWord{
+	ReturnWord(int v){
+	String w; 
+	public String word(int v){
+	  char c;
+	
+	  double dval;
+	   int j, val;
+	w ="";
+	for (j = 0; j < val;j++){
+		    dval = Math.random();  
+		    dval = dval *26; 
+		    val = (int)dval+97;
+		    c = (char)val;
+		    w = w + c;
+	    }
+	    String returnWord(){
+	    return w;
+	    }
+}
+
+}//end contructor
+}//end class
+
+
+class WordsClass1 {
+  public static void main(String args[]) { 
+	 
+	 String s = "aaa"; 
+	 String wo = "";
+	  int i, count = 0;
+	  boolean match;
+	  
+	  match = false;
+	  while (!match){
+		  //get word
+		  ReturnWord nw = new ReturnWord(5);   
+		  wo = nw.word();
+		  count++;
+		  System.out.print(wo+" - "+count+" - "); 
+		  if (wo.equals(s))
+		  	{ 
+				match = true;	
+			}
+		
+
+    }
+  } 
+}

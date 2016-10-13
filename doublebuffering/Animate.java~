@@ -1,0 +1,200 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Animate extends Applet implements Runnable
+{
+  private Thread thread = null;  // The thread that is used to drive the animation.
+  private Image offscreenImage = null; // The off-screen image used for double buffering.
+  private Graphics offscreenGraphics = null;
+  private Graphics primaryGraphics = null;
+  private boolean done;
+  private long pulseCount;
+  private int pulseLength = 100;
+  private boolean doubleBuffer = true;
+  public static final int IDEAL_WIDTH = 640;  //When this class is ran as an application, how wide should it be.
+  public static final int IDEAL_HEIGHT = 480; //When this class is ran as an application, how tall should it be.
+  public static final int SIZE = 32; //What is the size of each bouncing ball.
+  public final int BALL_COUNT = 20; //The number of balls to animate.
+  private int x[]; //What is the current x-coordinate of the ball.
+  private int y[]; //What is the current y coordinate of the ball.  
+  private int dx[]; //What is the current x-direction of each ball, 1=right, -1=left
+  private int dy[]; //What is the current y-direction of each ball, 1=down, -1=Up
+  private int checkWidth; // What is the width of the page that we should check, takes into account how wide the ball is.
+  private int checkHeight; // What is the height of the page that we should check, takes into account how tall the ball is.
+
+  public void init()
+  {
+    thread = new Thread(this);
+
+    offscreenImage = createImage(getWidth(), getHeight());
+
+    offscreenGraphics = offscreenImage.getGraphics();
+    primaryGraphics = getGraphics();
+    pulseCount = 0;
+    thread.start();
+    
+      public void init()
+  {
+    super.init();
+    checkWidth = getWidth() - SIZE;
+    checkHeight = getHeight() - SIZE;
+
+    // create the "balls"
+    x = new int[BALL_COUNT]; y = new int[BALL_COUNT];
+    dx = new int[BALL_COUNT]; dy = new int[BALL_COUNT];
+
+    for (int i = 0; i < BALL_COUNT; i++)
+    {
+      x[i] = (int) (Math.random() * checkWidth);
+      y[i] = (int) (Math.random() * checkHeight);
+      int tdx = (int) (Math.random() * 2);
+      int tdy = (int) (Math.random() * 2);
+
+      if (tdx == 1)
+        dx[i] = 1;
+      else
+        dx[i] = -1;
+
+      if (tdy == 1)
+        dy[i] = 1;
+      else
+        dy[i] = -1;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  }
+
+  public void paintOffscreen(Graphics g)
+  {
+    // paint the off-screen image
+    g.setColor(Color.black);
+    g.fillRect(0, 0, getWidth(), getHeight());
+  }
+
+  
+  public void run()
+  {
+    done = false;
+    while (!done)
+    {
+      try
+      {
+        // pause for this frame
+        Thread.sleep(pulseLength);
+
+        // draw the off-screen image
+        if (doubleBuffer)
+          paintOffscreen(offscreenGraphics);
+        else
+          paintOffscreen(primaryGraphics);
+
+        // paint off-screen image to primary display, if needed
+        if (doubleBuffer)
+          primaryGraphics.drawImage(offscreenImage, 0, 0, this);
+
+        // increase the pulse count
+        pulseCount++;
+      } catch (InterruptedException e)
+      {
+      }
+    }
+  }
+
+  public void setPulseLength(int pulseLength)
+  {
+    this.pulseLength = pulseLength;
+  }
+
+  public int getPulseLength()
+  {
+    return pulseLength;
+  }
+
+  public void setDoubleBuffer(boolean doubleBuffer)
+  {
+    this.doubleBuffer = doubleBuffer;
+  }
+
+  public boolean getDoubleBuffer()
+  {
+    return doubleBuffer;
+  }
+
+  public void setPulseCount(long pulseCount)
+  {
+    this.pulseCount = pulseCount;
+  }
+
+  public long getPulseCount()
+  {
+    return pulseCount;
+  }
+
+}
+//This method sets up the bouncing balls example.
+
+    
+    String str = getParameter("double");
+    if( str!=null)
+    {
+      if( Integer.parseInt(str)>0)
+        setDoubleBuffer(true);
+      else
+        setDoubleBuffer(false);
+    }
+
+    setPulseLength(10);
+  }
+
+
+  //  This method renders each frame of the bouncing balls.
+ // The off-screen graphics object to paint to.
+
+  public void paintOffscreen(Graphics g)
+  {
+    super.paintOffscreen(g);
+
+    for (int i = 0; i < BALL_COUNT; i++)
+    {
+      x[i] += dx[i];
+      y[i] += dy[i];
+      g.setColor(Color.WHITE);
+      g.fillOval(x[i], y[i], SIZE, SIZE);
+
+      // bounce if needed
+      if ((x[i] > checkWidth) || (x[i] < 0))
+        dx[i] = -dx[i];
+      if ((y[i] > checkHeight) || (y[i] < 0))
+        dy[i] = -dy[i];
+    }
+
+  }
+
+   
+  public static void main(String args[])
+  {
+    BouncingBalls applet = new BouncingBalls();
+    Frame frame = new Frame();
+    frame.addWindowListener(new WindowAdapter()
+    {
+      public void windowClosing(WindowEvent e)
+      {
+        System.exit(0);
+      }
+    });
+
+    frame.add(applet);
+    frame.setSize(IDEAL_WIDTH, IDEAL_HEIGHT);
+    frame.show();
+    applet.init();
+  }
+
+}

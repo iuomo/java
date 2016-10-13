@@ -1,0 +1,75 @@
+import java.awt.*;
+import java.applet.*;
+import java.io.*;
+/*                      
+<applet code="Bounce.class" width= 1600 height=900> 
+<param name=radius value= 5> 
+<param name=adjust value= 7> 
+<param name=text value="DONE!"> 
+</applet> 
+*/ 
+public class Bounce extends Applet  {
+int iradius;
+	int adj;
+	String m; 
+	
+public void init() {
+  
+       Font font = new java.awt.Font("Monospaced", Font.BOLD, 18);
+        setFont(font);
+        
+        }
+
+  public void start() { 
+    String temp;
+		
+    temp = getParameter("radius"); 
+    try { if(temp != null) iradius = Integer.parseInt(temp); 
+      else  iradius = 0; } catch(NumberFormatException exc) {  iradius = -1;  } 
+	   
+      temp = getParameter("adjust");    
+    try { if(temp != null) adj = Integer.parseInt(temp); 
+      else  adj = 0; } catch(NumberFormatException exc) {  adj = -1;  } 
+      
+		m = getParameter("text"); 
+    if(m == null) m = "not found"; 
+  } 
+ 
+public void paint(Graphics g) {
+	// only edit code in the paint method
+	//ired, igreen, iblue,redAjust, greenAjust, blueAjust
+	int i,j,x,y,count,cmod,left,xadj,yadj;
+
+	g.setColor(new Color(255,255,255));
+	g.fillRect(0,0,1600,900);	
+	int red = 0,green = 0,blue = 0;
+
+	count = 0;
+	left = 0;
+	x = 0;
+	y = 0;
+	xadj = 40;
+	yadj = 30;
+	// change the following code
+	for (;; ){
+					g.setColor(new Color(255,0,0));
+				//g.fillOval(x,y,20,20);
+				g.fillOval(x,y,10,10);	
+				count++;
+				x = x + xadj;
+				y = y + yadj;
+				if (x > (Math.cos(1)+200)) xadj = xadj * -1;
+				//if (x < cos(20) xadj = xadj * -1;
+				
+			}//end for
+			
+			
+		}//end for y
+	// you can stop changing now
+	// g.setColor(new Color(0,0,200));
+       // g.drawString(m,10,250);  
+	
+}
+
+
+

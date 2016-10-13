@@ -1,0 +1,52 @@
+class Pwr{
+	double b;  int e; double val;
+	Pwr (double base, int exp){
+		int i;b = base;e = exp;
+		val = 1;
+		for (i = e; i > 0;i--){
+			val = val * b;
+		}
+			System.out.print(base);
+			System.out.print("^");
+			System.out.print(exp);
+			System.out.print("=");
+			System.out.print(val);
+	}
+	double value (){
+		return val;
+	}
+}
+
+class Term {
+	
+	
+	
+	double value; // value of cx^e
+	double c; // coefficient
+	double x; // varaible x
+	int		e;  // exponent;
+}
+
+class BuildPoly {
+public static void main (String args[]){
+	int i;
+	double termvalue;
+	Term t1 = new Term();
+	t1.c = 4.5;
+	t1.x = 5;
+	t1.e = 1;
+	t1.value = t1.c * t1.x;
+	termvalue = t1.value;	
+	System.out.println(t1.c +"\t"+ t1.x +"\t"+ t1.e+" \t= "+t1.value);
+	
+	//t1.e needs a class and a method
+	Pwr  p1 = new Pwr(5,3);
+	Pwr  p2 = new Pwr(1000,0);
+	System.out.println("--------------------\n\n");
+	for (i = 0; i < 10;i++){
+		System.out.print(i+"\t");
+			Pwr  p0 = new Pwr(2,i);
+			System.out.println();
+	}
+	}
+}

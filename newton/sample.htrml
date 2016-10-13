@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Submitting HTML form in Java applet</title>
+    </head>
+    <body>
+        <center>
+            <!-- show the applet -->
+            <applet id="SampleApplet"
+                code="SampleApplet.class"
+                width="200" height="50"
+                    >
+            </applet>
+ 
+            <!-- show HTML form -->
+            <form method="POST" action="http://localhost:8080/SampleApp/process">
+                Enter Full Name: <input type="text" name="fullname" size="30"/>
+                <br/>
+                Enter E-mail: <input type="text" name="email" size="30"/>
+            </form>
+        </center>
+    </body>
+    <script type="text/javascript">
+ 
+        function submitForm() {
+            // do some processing submit the form...
+ 
+            document.forms[0].submit();
+        }
+    </script>
+</html>

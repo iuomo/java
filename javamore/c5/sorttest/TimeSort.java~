@@ -1,0 +1,64 @@
+import java.util.*;
+
+class Print{
+	static void array(double list[]){ 
+		int size = list.length;
+		int i;
+		for(i = 0;i < size; i++){
+			System.out.print(list[i]+" ");
+			if (i % 4 == 0)System.out.println();
+		}
+		System.out.println();
+	}
+}
+
+class Bubble {  
+	static void sort(double list[]){
+		int a, b;
+		double t;// t(temp)  
+		int size = list.length;  
+			// This is the bubble sort.  
+		for(a=1; a < size; a++)  
+    	for(b=size-1; b >= a; b--) {  
+				if(list[b-1] > list[b]) { // if out of order  
+						// exchange elements   
+					t = list[b-1];  
+					list[b-1] = list[b];  
+					list[b] = t;  
+       }  
+      }
+		}
+}
+
+
+class TimeSort{
+
+	public static void main (String args[]){
+		double now,after,time;
+		
+		int i;
+		int max = 10000;
+		double dArray[] = new double[max];
+		// build the array
+			
+		for ( i = 0; i < max; i++){ 
+			dArray[i] = Math.random();
+	
+		
+		}
+		System.out.println("********** SORTING USING Bubble.sort **********");
+		now = System.currentTimeMillis();  		
+		Bubble.sort(dArray);
+		after = System.currentTimeMillis();    
+		time = (after - now)/1000;
+		System.out.println(time);
+		//Print.array(dArray);
+		
+		System.out.println("********** SORTING USING Arrays.sort **********");
+		now = System.currentTimeMillis();  		
+		Arrays.sort(dArray);
+		after = System.currentTimeMillis();    
+		time = (after - now)/1000;
+		System.out.println(time);
+	}//end main
+}//end class

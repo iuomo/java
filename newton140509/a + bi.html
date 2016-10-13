@@ -1,0 +1,42 @@
+<html><head><title>a + bi</title></head><body>
+Please wait, the applet is loading!
+<applet code="a%20+%20bi_files/Newton.asc" height="700" width="800">
+</applet>
+
+<pre>Newton's method of approximating the imaginary roots to x^4 -1
+
+I wrote this java code using the following constructors:
+
+INewtonMethod (double a, double bi, int root, long limit) 
+	// this class is the main engine to calculate x2 = x1 - f(x) / f'(x)  where x is a complex number in the form of a + bi
+DivideImaginary(double na,double nbi,double da, double dbi) 
+	// this class was needed to divide imaginaries
+Iproduct (double a, double bi,int exp) 
+	// this class was need to compute (a+bi)^n  where n is 4 in this case
+
+and then a class called ColorArray builds a two dimensional array as follows:
+
+class ColorArray{
+		int rgb[][] = new int[3][40]; 
+
+		
+		int[][] color(){
+					int c,v,red,green,blue;
+		int radj;int gadj;int badj;
+		
+		red = 0;green = 0;blue = 0;
+		radj = 13;gadj = 0;badj = 12;
+			for (v = 0; v &lt; 31; v ++){
+				red = red + radj;
+				green = green + gadj;
+				blue = blue + badj;
+			if (red &gt; 255) red = 0; if (red &lt; 0) red = 255;
+				if (green &gt; 255) green = 0; if (green &lt; 0)green = 255;
+				if (blue &gt; 255) blue = 0; if (blue &lt; 0) blue= 255;
+				rgb[0][v] = red;rgb[1][v] = green;rgb[2][v] = blue;
+			}
+				return rgb;
+		}
+	}
+</pre>
+</body></html>

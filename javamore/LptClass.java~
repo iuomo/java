@@ -1,0 +1,68 @@
+import java.lang.*;
+import java.io.*; 
+
+class TurnOn {
+	void go(int i)_{
+	String envp[] = null;			
+	String workingDir="/home/cwc/java";
+	String = command +" "+c;
+	long t0, t1;
+	
+	Runtime.getRuntime().exec(command,envp,new java.io.File(workingDir));
+
+        t0 =  System.currentTimeMillis();
+
+        do{
+            t1 = System.currentTimeMillis();
+        }
+        while (t1 - t0 < n);
+    }
+
+}
+
+class Delay {  
+
+  void delay(long i) {  
+	  //long delay = i;
+	  long t0, t1;
+	  t0 =  System.currentTimeMillis();
+	  do{
+	  	t1 = System.currentTimeMillis();
+	  }while (t1 - t0 < i);	
+  	}    
+}
+
+
+
+class LptClass {
+	public static void main(String Arg[]) 	throws Exception {
+		long n = 1000;
+	
+		Delay d = new Delay();
+		TurnOn g = new TurnOn();
+	String c0 = "lptout 0";
+	String c1="lptout 1";
+	String c2="lptout 2";
+	String c3="lptout 4";
+	String c4="lptout 8";
+	String c5="lptout 16";
+	String c6="lptout 32";
+	String c7="lptout 64";
+	String c8="lptout 128";
+	
+	
+
+	for(;;){
+		//  Delay (1000);
+		//  TurnOn (255,1000);
+		// 128 64 32 16 4 2 1 0
+		Runtime.getRuntime().exec(c0,envp,new java.io.File(workingDir));
+		
+		d.delay(n);		
+	
+		}
+
+
+	}
+}
+

@@ -1,0 +1,44 @@
+<html><head><title> test form  </title> 
+<link rel="stylesheet" href="nav_style.css" type="text/css">
+
+ </head>
+<body>
+Newtons Metho
+<form method="post" onSubmit="return false;">
+red start:<input type="text" size="4" name="redAjust" value="0">&nbsp;
+green start:<input type="text" size="4" name="greenAjust" value="0">&nbsp;
+blue start:<input type="text" size="4" name="blueAjust" value="0">&nbsp;
+
+
+
+red adjust:<input type="text" size="4" name="redAjust" value="0">&nbsp;
+green adjust:<input type="text" size="4" name="greenAjust" value="0">&nbsp;
+blue adjust:<input type="text" size="4" name="blueAjust" value="0">&nbsp;
+
+
+<input type="button" value="draw the newton method fractal" 
+onClick="document.julia.setC1(this.form.c1.value);
+document.julia.setC2(this.form.c2.value);
+document.julia.setREDajust(this.form.redAjust.value);
+document.julia.setGREENajust(this.form.greenAjust.value);
+document.julia.setBLUEajust(this.form.blueAjust.value);">
+</form>
+
+
+<applet name="julia"  code="Julia.class" width="650" height="500">
+<param name=red value=200> 
+<param name=green value=200> 
+<param name=blue value=200> 
+<param name=redA value=-10> 
+<param name=greenA value=-10> 
+<param name=blueA value=-10> 
+
+<param name=limit value=5> 
+
+</applet>  
+<hr>
+<a href="Julia.java" class="navhead">Julie.java source</a>
+
+
+<//body>
+</html>

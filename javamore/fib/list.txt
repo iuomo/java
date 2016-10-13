@@ -1,0 +1,9 @@
+total 28
+-rwxr-xr-x 1 cwc cwc  877 Feb 28 04:39 BuildMatrix.class
+-rwxr-xr-x 1 cwc cwc 1496 Feb 28 04:39 Div89.class
+-rwxr-xr-x 1 cwc cwc 3761 Feb 28 04:39 Div89.java
+-rwxr-xr-x 1 cwc cwc 1064 Feb 28 04:39 Fib.class
+-rwxr-xr-x 1 cwc cwc  820 Feb 28 04:39 Fib.java
+-rwxr-xr-x 1 cwc cwc  728 Feb 28 04:39 LongDiv.class
+-rwxr-xr-x 1 cwc cwc 1201 Feb 28 04:39 SumMatrix.class
+-rw-r--r-- 1 cwc cwc    0 Mar  8 04:17 list.txt

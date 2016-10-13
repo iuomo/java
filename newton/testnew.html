@@ -1,0 +1,54 @@
+<html><head><title> Test New </title> 
+
+
+ </head>
+ 
+
+
+<form name="tn" method="post" onSubmit="return false;"  >
+COLOR START (0 TO 255)<br />
+red start:<input type="text" size="4" name="red" value="8"><br />
+green start:<input type="text" size="4" name="green" value="88"><br />
+blue start:<input type="text" size="4" name="blue" value="-88"><br />
+<br />
+COLOR END (0 TO 255)<br />
+red end:<input type="text" size="4" name="redAjust" value="9"><br />
+green end:<input type="text" size="4" name="greenAjust" value="99"><br />
+blue end:<input type="text" size="4" name="blueAjust" value="-99"><br />
+<br />
+SCALE AND LIMIT<br />
+limit:<input type="text" size="4" name="limit" value="10"><br />
+lcale:<input type="text" size="4" name="scale" value="15"><br />
+
+<input type="button" value="Test"  
+onClick="document.testnew.setRED(this.form.red.value);
+document.testnew.setGREEN(this.form.green.value);
+document.testnew.setBLUE(this.form.blue.value);
+document.testnew.setRADJ(this.form.redAjust.value);
+document.testnew.setGADJ(this.form.greenAjust.value);
+document.testnew.setBADJ(this.form.redAdjust.value);
+document.testnew.setLIMIT(this.form.limit.value);
+document.testnew.setSCALE(this.form.scale.value);">
+</form>
+<br />Newsflash (This input form does not work yet.)
+
+<body>
+ <center>
+<applet name=testnew  code=TestNew.class width=300 height=300>
+<param name=red value=1>
+<param name=green value=2>
+<param name=blue value=3>
+
+<param name=redA value=4>
+<param name=greenA value=5>
+<param name=blueA value=6>
+
+<param name=limit value=7>
+<param name=scale value=8>
+</applet>
+
+
+</center>
+
+</body>
+</html>

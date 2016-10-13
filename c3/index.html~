@@ -1,0 +1,36 @@
+<html><head><title>bounce wgwp </title></head>
+<body>
+
+
+THE BOUNCE AND SWITCH PROJECT
+<table>
+<tr><td>
+<a href = "Bounce.java">Bounce.java source</a>
+<applet code="Bounce.class" width= 256 height=256> 
+<param name=red value=10> 
+<param name=green value=10> 
+<param name=blue value=10> 
+<param name=redA value=-10> 
+<param name=greenA value=-20> 
+<param name=blueA value=30> 
+<param name=text value="BOUNCE"> 
+</applet> 
+</td>
+<td>
+<a href = "Switch.java">Switch.java source</a>
+<applet code="Switch.class" width= 500 height=500> 
+</applet> 
+
+</td>
+</table>
+
+<applet code="Bounce2.class" width= 256 height=256> 
+<param name=red value=10> 
+<param name=green value=10> 
+<param name=blue value=10> 
+<param name=redA value=-10> 
+<param name=greenA value=-20> 
+<param name=blueA value=30> 
+<param name=text value="BOUNCE"> 
+</applet> 
+</html>

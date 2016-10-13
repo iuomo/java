@@ -1,0 +1,20 @@
+<html><head><title>MazeMan</title>
+<link rel="stylesheet" href="nav_style.css" type="text/css"></head>
+<body>
+<table>
+<tr>
+<td>
+<applet code="MazeManApplet" width=400 height=400></applet>
+</td>
+</tr>
+<tr>
+<td  bgcolor ="yellow">
+<?php
+include 'mazescores.php';
+?>
+</td>
+</tr>
+
+
+</body>
+</html>

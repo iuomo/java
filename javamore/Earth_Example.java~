@@ -1,0 +1,24 @@
+import java.awt.*;
+import java.applet.*;
+import java.io.*;
+/*                      
+<applet code="Earth.class" width= 800 height=600> 
+</applet> 
+*/ 
+public class Earth extends Applet  {
+public void init() { }
+public void start() { } 
+public void paint(Graphics g) {
+	int h,k,x;
+		g.setColor(new Color(0,0,0));
+		g.fillRect(0,0,800,600);
+		g.setColor(new Color(0,0,255));
+		g.fillOval(100,100,350,350);
+			g.setColor(new Color(170,170,230));
+			g.drawOval(100,100,350,350);
+			
+			g.setColor(new Color(0,0,0));
+			g.fillRect(250,60,50,50-(k));
+	}
+}
+}

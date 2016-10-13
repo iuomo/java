@@ -1,0 +1,160 @@
+import java.io.*; 
+import java.util.*;
+/////////////////////////////////////////////////////////////////////
+class ReadFile{
+	static int creturn = 0;
+	static void fileread(String file, String list[])throws Exception{
+		String s; int c =0;
+		FileReader fr = new FileReader(file); 
+		BufferedReader br = new BufferedReader(fr); 
+	 
+		while((s = br.readLine()) != null) { 
+			list[c] = s; 
+		 //System.out.println(c+ " - " + s);
+		 	c++;
+			 creturn++;
+			
+		} 
+		//creturn = c;
+		//System.out.println("this is c "+c);
+		fr.close(); 
+		
+	}//end of ReadFile method
+	static int getListLength(){
+		//System.out.println(creturn+ " creturn");
+	return creturn;}
+}
+/////////////////////////////////////////////////////////////////////
+
+class ReturnWord{
+	String w; 
+	
+	ReturnWord(int v){
+	  char c;
+	  double dval;
+	   int j, val;
+	   w ="";
+	   for (j = 0; j < v;j++){
+		    dval = Math.random();  
+		    dval = dval *26; 
+		    val = (int)dval+97;
+		    c = (char)val;
+		    w = w + c;
+	    }
+}//end contructor
+
+ String word(){
+		     return w;
+		}
+	  
+}//end class
+/////////////////////////////////////////////////////////////////////
+	
+	// binary search  
+class BinarySearch0{
+	boolean returnmatch = false;
+	int returnint;
+	BinarySearch0(boolean bmatch,String keyWord,String dlist[],int dictionarylength){
+		int i;
+		//System.out.println(keyWord+" "+dictionarylength);
+		//returnmatch = true;
+		//System.out.println (" "+bmatch);
+		int mid = (int)(dictionarylength / 2);
+		int test = keyWord.compareTo(dlist[mid]);
+		System.out.println (test+" " +keyWord+" "+dlist[mid]);
+		for (int p = 0; p <1000000000;p++);
+	for (i = 0; i < dictionarylength; i++){
+		if (keyWord.equals(dlist[i])) {
+			returnint = i;
+			returnmatch = true;
+			//System.out.println (returnint+" BS "+returnmatch);
+			
+		}
+	}
+	
+	}
+	boolean getmatch(){
+		return returnmatch;	
+	}
+	
+	int getInt(){
+		return 	returnint;
+	}
+	
+}
+
+
+	
+/////////////////////////////////////////////////////////////////////
+class TestWordsPlus { 
+  public static void main(String args[]) throws Exception{ 
+    int i,c,max,wl,slength,rval;
+      boolean match = false;
+    int count = 0;
+	String wlist[] = new String[70000];//word list
+	int wnt[] = new int[70000];
+	for (i = 0; i < 70000;i++){wlist[i] = null; wnt[i] = 0 ; }//clear word list
+	ReadFile ob  = new ReadFile();
+	ReadFile.fileread("words60000.txt",wlist);
+	wl = ob.getListLength();
+	System.out.println("wlist "+wl);
+
+	
+	max =0; slength = 0;
+     for (i = 0; i < wl; i++){
+	     slength = wlist[i].length();
+	     if (slength > max){max = slength;  
+	// System.out.println(i+ " =  "+ wlist[i] +" ");
+	 }
+	    // System.out.println(i+" "+max+" max length ");
+    }
+    System.out.println(max+" max length ");
+     String wo;
+   
+     int matchcount = 0;
+     int thelength = 0;
+     int  maxlength = 0;
+     int listindex = 0;
+     int fill = 0;
+    for(int j = 0 ;;){
+	    	rval = (int)((Math.random()*21)+1);
+    		ReturnWord nw = new ReturnWord(rval);   
+		  wo = nw.word();
+		  count++;
+		  if (count % 1000 == 0)System.out.println(count);
+		//  System.out.println(wo+" - "+count+" - "); 
+		//check if the word is in the list
+		
+		
+		 //match = bs.bsmatch();
+		  match = false;
+		 //System.out.println(match);
+		  BinarySearch0 bs = new  BinarySearch0(match,wo,wlist,wl);   
+		  match = bs.getmatch();
+		  listindex = bs.getInt();
+		
+		 //BinarySearch.bsearch(match,wo,wlist,wl);
+		// match = BinarySearch.wordmatch();
+		fill = 0;
+		if (match){
+			wnt[listindex] = wnt[listindex] + 1;
+			for (j = 0; j < wl; j++)if(wnt[j]>0)fill++; 
+			System.out.println("word # "+listindex+" - ");
+			System.out.print( wo + " -  " );
+		
+	System.out.println(fill+" different words created | "+wlist[listindex]+" was hit "+wnt[listindex]+" times");
+				
+		}
+					//thelength = wo.length();
+		//if (thelength > maxlength)maxlength = thelength;
+				matchcount++;
+				
+	//System.out.println(wo+" got a match number "+ matchcount+" from "+count);
+	//System.out.println(maxlength+" max length ");
+				
+				
+		  	}
+    
+  }
+}
+

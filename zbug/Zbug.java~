@@ -1,0 +1,131 @@
+// Julia.java source by Craig Coleman
+import java.awt.*;
+import java.applet.*;
+import java.io.*;
+
+/*                      
+<applet name="z"  code="Zbug.class" width="300" height="300">
+<param name=c1String value=0.345> 
+<param name=c2String value=-.07> 
+<param name=red value=200> 
+<param name=green value=200> 
+<param name=blue value=200> 
+<param name=redA value=-10> 
+<param name=greenA value=-10> 
+<param name=blueA value=-10> 
+<param name=limit value=50> 
+<param name=scale value=800> 
+</applet>  
+*/ 
+public class Zbug extends Applet  {
+	String input_c1,inout_c2;
+	int ired, igreen, iblue,iradj,igadj,ibadj,ilimit,iscale;
+double c1,c2;
+
+  public void start() { 
+    String temp; 
+
+    temp = getParameter("red"); 
+    try { if(temp != null) ired = Integer.parseInt(temp); 
+      else  ired = 0; } catch(NumberFormatException exc) {  ired = -1;  } 
+	  
+	   temp = getParameter("green"); 
+    try { if(temp != null) igreen = Integer.parseInt(temp); 
+      else  igreen = 0; } catch(NumberFormatException exc) {  igreen = -1;  } 
+	  
+	   temp = getParameter("blue"); 
+    try { if(temp != null) iblue = Integer.parseInt(temp);
+      else  iblue = 0; } catch(NumberFormatException exc) {  iblue = -1;  }
+	  
+	  temp = getParameter("redA"); 
+	      try { if(temp != null) iradj = Integer.parseInt(temp); 
+      else  iradj = 0; } catch(NumberFormatException exc) {  iradj = -1;  } 
+	  
+	   temp = getParameter("greenA"); 
+    try { if(temp != null) igadj = Integer.parseInt(temp); 
+      else  igadj = 0; } catch(NumberFormatException exc) {  igadj = -1;  } 
+	  
+	   temp = getParameter("blueA"); 
+    try { if(temp != null) ibadj = Integer.parseInt(temp); 
+      else  ibadj = 0; } catch(NumberFormatException exc) {  ibadj = -1;  } 
+	  
+	   temp = getParameter("limit"); 
+    try { if(temp != null) ilimit = Integer.parseInt(temp); 
+      else  ilimit = 0; } catch(NumberFormatException exc) {  ilimit = -1;  } 
+      
+      temp = getParameter("scale"); 
+    try { if(temp != null) iscale = Integer.parseInt(temp); 
+      else  iscale = 0; } catch(NumberFormatException exc) {  iscale = -1;  } 
+	
+	  	 	  
+  } 
+ 
+public void paint(Graphics g) {
+
+g.drawString("r:"+ired,10,10);
+g.drawString("g:"+igreen,10,30);
+g.drawString("b:"+iblue,10,50);
+g.drawString("ra:"+iradj,10,70);
+g.drawString("ga:"+igadj,10,90);
+g.drawString("ba:"+ibadj,10,110);
+g.drawString("limit:"+ilimit,10,130);
+g.drawString("scale:"+iscale,10,150);
+g.drawString("091016:0557",10,180);
+		                            
+    }//end paint
+
+ //   public void setX(String temp) {
+//	xPlus = Integer.parseInt(temp); }              
+  
+  
+ // public void setY(String temp) {
+//	yPlus = Integer.parseInt(temp); 
+
+//  }   
+
+
+
+
+   public void setRED(String temp) {
+		ired = Integer.parseInt(temp); 
+	//repaint();
+   }              
+  
+    public void setGREEN(String temp) {
+	igreen = Integer.parseInt(temp); 
+	//repaint();
+    }
+  
+   public void setBLUE(String temp) {
+	iblue = Integer.parseInt(temp); 
+	//repaint(); 
+   }            
+	
+	
+ public void setRADJ(String temp) {
+	iradj = Integer.parseInt(temp);   
+	//repaint(); 
+ }              
+  
+    public void setGADJ(String temp) {
+	igadj = Integer.parseInt(temp); 
+	//repaint();
+    }
+  
+   public void setBADJ(String temp) {
+	ibadj = Integer.parseInt(temp); 
+	//repaint(); 
+   }              
+
+ public void setLIMIT(String temp) {
+	ilimit = Integer.parseInt(temp); 
+	//repaint(); 
+ }   
+
+ public void setSCALE(String temp) {
+	iscale = Integer.parseInt(temp); 
+	//repaint(); 
+ }   	
+  
+}// end Julia2
+

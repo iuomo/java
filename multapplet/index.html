@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+   <title>pascobulldogs.org/math</title>
+
+<link rel="icon" href="favicon.ico" type="image/x-icon"> 
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+
+<title> pascobulldogs.org/math/</title>
+<style type="text/css">
+body {margin: 0; padding: 0;
+	background-color: black;
+background-image:url('img/newtonbw.png');
+	font-family:"Verdana","sans-serif";color:#ffffff;font-size:18px;
+}
+
+a:link {text-decoration: none;color:#ffffff; background-color: #000000;}
+a:visited {text-decoration:none;color: #ffffff;}
+a:active {text-decoration:none; color: ##ffffff;}
+a:hover {text-decoration: underline; color: #ce89ff;}
+
+</style>
+
+
+<script language = "javascript" type="text/javascript" >	
+	gImages = new Array(3);
+	gImages[0] = "img/3d1.jpg";
+	gImages[1] = "img/3d2.jpg";
+	gImages[2] = "img/3d3.jpg";
+	gImages[3] = "img/colorwheel.jpg";
+
+	
+	thisPict = 0;
+	imgCt = gImages.length
+	function rotate() {
+		if (document.images) {
+			if (document.adPict.complete) {
+				thisPict++
+				if (thisPict == imgCt) {
+					thisPict = 0
+				}
+				document.adPict.src=gImages[thisPict]
+			}
+		  	setTimeout("rotate()",3000)
+	  	}
+	}
+</script>
+</head>
+
+<body>
+<center>
+
+<hr />
+Math Links:<br />
+<a href="http://www.wolframalpha.com/" target="_blank">wolframalpha.com</a><br />
+<a href="http://www.khanacademy.org/" target="_blank">khanacademy.org</a><br />
+<hr />
+Math Applets:<br />
+    	<a href="multapplet/" target = "_blank">49 Multiplication Facts - Random Order</a><br />
+    	<a href="invest3.html">Investment Calculator 3(old java 1.3 applet)</a><br />
+    	<a href="invest2.html">Investment Calculator 2(simple java 1.4 applet)</a><br />
+    	<a href="invest.html">Investment Calculator 1(java applet Jframe)</a><br />
+   
+    	<a href="xFunctions/">xFunctions</a><br />
+    	<a href="http://cs.jsu.edu/mcis/faculty/leathrum/Mathlets/">Mathlets (java math applets)</a><br />
+<hr />
+
+Math Stuff:<br />
+ 	<a href="cardscoins.html">cards and coins assignment 2004</a><br />
+
+</center>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

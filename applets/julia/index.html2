@@ -1,0 +1,120 @@
+<html><head><title> applet test  </title> 
+<style>
+body {margin: 0; padding: 0;
+background-color: #79bbc9;
+color:#71b9cf;
+background-image:url('img/blackcarbon.jpg');
+font-family:"Arial","sans-serif";color:#700070;font-size:12px;}
+pre{margin: 0; padding: 0;font-family:"Arial","sans-serif";color:#71b9cf;font-size:12px;}
+
+
+a{
+font-family:"Arial","sans-serif";
+font-size:12px;
+font-size:1em;
+color: #c6e6db;
+text-decoration:none;
+border-color: #c6e6db;
+border-style:solid;
+border-width:1px 0px 1px 0px; 
+
+}
+
+a:hover {
+font-family: arial, san-serif;
+font-size:12px;
+font-size:1em;
+color: #000000;
+background-color: #71b9cf;
+text-decoration:none;
+border-color: #c6e6db;
+border-style:solid;
+border-width:1px 0px 1px 0px; 
+}
+
+#imgLeft {
+position:absolute;
+top: 50px;
+left :0px;
+z-index:1;
+}
+
+#menu {
+text-align: left;
+top: 0px;
+left :1000px;
+z-index:1;
+}
+
+#contents {
+color:#f7fb87;
+background-color: #c6e6db;
+position:absolute;
+vertical-align: center;
+top: 40px;
+width:800px;
+top: 0px;
+left:0px;
+z-index:0;
+
+}
+#contents2 {
+background-color: #ffffff;
+background-image:url('img/whitecarbon.jpg');
+width: 80%;
+padding: 1em;
+color:#000000;
+border-color: #c6e6db;
+border-style:solid;
+border-width:0px 40px 0px 40px;
+z-index:0;
+}
+
+
+
+</style>
+
+ </head>
+<body>
+<div id = "menu">
+<tt> 
+<form method="post" onSubmit="return false;">
+&nbsp;&nbsp;red:<input type="text" size="3" name="red" value="20">&nbsp;
+green:<input type="text" size="3" name="green" value="20">&nbsp;
+blue:<input type="text" size="3" name="blue" value="20">&nbsp;
+c1:<input type="text" size="7" name="c1" value="0">&nbsp;
+c2:<input type="text" size="7" name="c2" value="0">&nbsp;
+x:<input type="text" size="4" name="x" value="n/a">&nbsp;
+y:<input type="text" size="4" name="y" value="n/a">&nbsp;
+<br />
+r adj:<input type="text" size="3" name="redA" value="-10">&nbsp;
+g adj:<input type="text" size="3" name="greenA" value="-20">&nbsp;
+b adj:<input type="text" size="3" name="blueA" value="-30">&nbsp;
+limit:<input type="text" size="3" name="limit" value="0">&nbsp;
+scale:<input type="text" size="3" name="scale" value="0">&nbsp;
+</tt>
+
+<input type="button" value="Draw Julia Set" onClick="document.julia.setC1(this.form.c1.value);document.julia.setC2(this.form.c2.value);document.julia.setRED(this.form.red.value);document.julia.setGREEN(this.form.green.value);document.julia.setBLUE(this.form.blue.value);document.julia.setRADJ(this.form.redA.value);document.julia.setGADJ(this.form.greenA.value);document.julia.setBADJ(this.form.blueA.value);document.julia.setLIMIT(this.form.limit.value);document.julia.setSCALE(this.form.scale.value);">
+</form>
+
+</div>
+<!-------------------------------------------------------------------------->
+/*                      
+<applet name="julia"  code="Julia.class" width="1000" height="1000">
+<param name=c1String value=0.345> 
+<param name=c2String value=-.07> 
+<param name=red value=255> 
+<param name=green value=255> 
+<param name=blue value=0> 
+<param name=redA value=-1> 
+<param name=greenA value=-1> 
+<param name=blueA value=0> 
+<param name=limit value=50> 
+<param name=scale value=800> 
+</applet>  
+*/ 
+
+
+
+<//body>
+</html>

@@ -1,0 +1,23 @@
+class RandomIndex {
+	public static void main (String args[]){
+		int i,rv;	// rv(random value)
+		int ra[] = new int[52];	//random array
+		
+		for (i = 0; i < 52; i++) ra[i] = 0; // set each array element to 0
+		
+		//set array element to 1
+		for (i = 0; i < 52; i++) {
+			rv = (int)(Math.random() * 52);
+			System.out.print(rv+" ");
+			ra[rv] = 1;
+			if (i % 5 == 0) System.out.println();
+	}
+			
+	// this displays the array of 1's
+	System.out.println();
+	for (i = 0; i < 52; i++) {System.out.print(ra[i]);
+			if (i % 5 == 0) System.out.println();
+	}
+		System.out.println();	
+	}
+}

@@ -1,0 +1,31 @@
+<html>
+
+
+<form  name = "juliaform" method="post" action="julia.html">
+<INPUT TYPE="hidden" NAME="juliaform" VALUE="upload">
+
+<input tpye=text size=10 name= "c1" value = "0.333444">
+
+<input type=submit value="SUBMIT YOUR INPUTS">
+
+<applet code="Julia.class" width= 900 height=800 mayscript> 
+<param "form name"  value ="juliaform">
+<param "field name" value = "c1"> 
+
+<param name=red value=255> 
+<param name=green value=0> 
+<param name=blue value=255> 
+
+<param name=redAjust value=-10> 
+<param name=greenAjust value=100> 
+<param name=blueAjust value=-10> 
+<param name=limit value=10> 
+
+
+<param name=c2 value=-.06> 
+</applet>
+
+</form>
+
+</html>
+<param name=c1 value=0.333444> 

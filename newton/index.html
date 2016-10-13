@@ -1,0 +1,75 @@
+<html><head><title> Newton's Method</title> 
+
+
+ </head>
+ 
+ <style>
+body {margin: 0; padding: 0;
+background-color: #ffffff;
+color:#000000;
+}
+#form {
+position:absolute;
+text-align: left;
+top: 10px;
+left: 1010px;
+z-index:0;
+font-family:"Arial","sans-serif";color:#000000;font-size:12px;
+}
+
+</style>
+ 
+ 
+<body>
+	<div class id = "form">
+Newton's Method - 140520
+<form name="newton" method="post" onSubmit="return false;"  >
+COLOR START (0 TO 255)<br />
+r start:<input type="text" size="4" name="rStart" value="0"><br />
+g start:<input type="text" size="4" name="gStart" value="0"><br />
+b start:<input type="text" size="4" name="bStart" value="0"><br />
+<br />
+COLOR END (0 TO 255)<br />
+r end:<input type="text" size="4" name="rEnd" value="255"><br />
+g end:<input type="text" size="4" name="gEnd" value="127"><br />
+b end:<input type="text" size="4" name="bEnd" value="63"><br />
+<br />
+SCALE AND LIMIT<br />
+limit:<input type="text" size="4" name="limit" value="127"><br />
+scale:<input type="text" size="4" name="scale" value="100"><br />
+
+<input type="button" value="Newton's Method" 
+onClick="document.n.setRED(this.form.rStart.value);
+document.n.setGREEN(this.form.gStart.value);
+document.n.setBLUE(this.form.bStart.value);
+document.n.setRADJ(this.form.rEnd.value);
+document.n.setGADJ(this.form.gEnd.value);
+document.n.setBADJ(this.form.bEnd.value);
+document.n.setLIMIT(this.form.limit.value);
+document.n.setSCALE(this.form.scale.value);">
+</form>
+<br />
+Caos was discovered here.
+
+</div>
+
+<applet name="n"  code="Newton.class" width="900" height="900">
+<param name="rStart"  value="255">
+<param name=gStart value=255>
+<param name=bStart value=255>
+
+<param name=rEnd value=127>
+<param name=gEnd value=63>
+<param name="bEnd" value="31">
+
+<param name=limit value=127>
+<param name=scale value=100>
+</applet>
+
+<hr>
+
+
+
+
+</body>
+</html>

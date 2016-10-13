@@ -1,0 +1,518 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+    
+        <title>Life Cycle of an Applet (The Java&#8482; Tutorials &gt; 
+            Deployment &gt; Applets)
+</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+<script type="text/javascript">
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide the TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+    
+</script>
+
+    <style id="js-welcome-css" type="text/css">.js-WelcomePanel { margin: 0px 0px 10px 0px; font: 12px Arial; text-align: left; }.js-WelcomePanelBottom { margin: 10px 0px 0px 0px; }.js-WelcomePanelTitle { padding-left: 7px; border-bottom: 1px solid #d1bea4; background: #e4d0b3; color: #fff; font: 14px Arial; font-weight: bold; line-height: 21px; }.js-WelcomePanelClose { height: 21px; width: 20px; float: right; cursor: pointer; position: relative; top: 7px; background: no-repeat url(//js-kit.com/images/welcome/close.png); }.js-WelcomePanelContent { padding: 18px 20px; background-color: #fffae4; color: #2e2e30; line-height: 21px;  }.js-WelcomePanelContentBlock a, .js-WelcomePanelContentBlock a:link, .js-WelcomePanelContentBlock a:visited, .js-WelcomePanelContentBlock a:hover, .js-WelcomePanelContentBlock a:active { text-decoration: none; color: #2e2e30; font: 12px Arial; white-space: nowrap; }.js-WelcomePanelContentBlock a:hover, .js-WelcomePanelContentBlock a:active { text-decoration: underline; }.js-WelcomePanelHeader { font: 16px Arial; font-weight: bold; color: #2e2e30; padding: 0px; line-height: 20px;  }.js-WelcomePanelContentBlock { float: left; padding-bottom: 5px; }.js-WelcomePanelContentBlock table img { vertical-align: middle; }.js-WelcomePanelCtls { float: left; text-align: center; margin-top: 9px; line-height: 15px; }.js-WelcomePanelCtls a, .js-WelcomePanelCtls a:active, .js-WelcomePanelCtls a:visited, .js-WelcomePanelCtls a:hover { color: #2e2e30; font: 11px Arial; }.js-WelcomePanelArrow { height: 12px; }.js-WelcomeImgInfo { height: 16px; line-height: 16px; padding: 4px 0px 0px 23px; float: left; background: url(//js-kit.com/images/welcome/information.png) no-repeat left center; }.js-WelcomeImgReg { height: 16px; line-height: 16px; padding: 4px 0px 0px 23px; float: left; background: url(//js-kit.com/images/welcome/pencil.png) no-repeat left center; }.js-WelcomeImgProfile { height: 16px; line-height: 16px; padding: 1px 0px 0px 25px; float: left; background: url(//js-kit.com/images/welcome/edit_profile.png) no-repeat left center; }.js-WelcomeImgHelp { height: 16px; line-height: 16px; padding: 1px 0px 0px 25px; float: left; background: url(//js-kit.com/images/welcome/help.png) no-repeat left center; }.js-WelcomeImgCustom { height: 16px; line-height: 16px; padding: 1px 0px 0px 25px; float: left; background: url(//js-kit.com/images/welcome/bullet_wrench.png) no-repeat left center; }.js-WelcomeImgDashboard { height: 16px; line-height: 16px; padding: 1px 0px 0px 25px; float: left; background: url(//js-kit.com/images/welcome/dashboard.png) no-repeat left center; }.js-WelcomeImgTwitter { height: 16px; line-height: 16px; padding: 1px 0px 0px 25px; float: left; background: url(//js-kit.com/images/welcome/twitter.png) no-repeat left center; }.js-WelcomeImgSupport { height: 16px; line-height: 16px; padding: 1px 0px 0px 25px; float: left; background: url(//js-kit.com/images/welcome/support.png) no-repeat left center; }.js-WelcomeImgWidgets { height: 16px; line-height: 16px; padding: 1px 0px 0px 25px; float: left; background: url(//js-kit.com/images/welcome/widgets.png) no-repeat left center; }.js-WelcomeImgPanel { height: 16px; line-height: 16px; padding: 1px 0px 0px 25px; float: left; background: url(//js-kit.com/images/welcome/admin_panel.png) no-repeat left center; }</style><style id="js-AuthAreaWrap-css" type="text/css">.js-CommentsSkin-smoothgray .js-commentInputName { margin-right: 110px; }.js-CommentsSkin-smoothgray .js-commentInputEmail { margin-right: 110px; }.js-CommentsSkin-smoothgray .js-commentInputUrl { margin-right: 110px; }.js-CommentsSkin-smoothgray .js-AuthAreaWrap { margin-right: 110px; }.js-CommentsSkin-smoothgray .js-CCButtons { margin: 0.3em 0 0.5em 5px; width: 100%;}.js-authSelector { float: left; margin-bottom: 5px; }.js-logoutSpan { display:none; margin-left: 5px;margin-top: 3px; }</style><style id="js-cmt-css" type="text/css">.js-OldComments { margin-bottom: 1px; clear:both;}.js-LeaveComment { margin: 5px 0 0 5px; }.js-CreateComment, .js-EditComment { text-align: left; display: none; }.js-commentInputUrl { display: none; }.js-CCMore { padding-left: 3px }.js-commentOptions { float: left; }.js-commentPubOptions { float: left; padding: 2px 5px; }.js-commentShareCheckbox { float: left; margin: 1px 0 0 5px; }.js-commentShareLabel { margin: 1px 3px 0 3px; line-height: 13px; float: left; }.js-commentYahooShareLabelLogo {margin: 1px 0 0 0; float: left; width: 49px; height: 13px; background: no-repeat url(//js-kit.com/images/yahoo/yoslogo.png); }.js-commentSubmit { text-align: right; }.js-CreateCommentBg { margin: 1em; padding: 0.5em; border: solid 1px #c0c0c0; text-align: left; float: left; }.js-EditComment .js-CreateCommentBg { float: none; border: none; padding: 0; }.js-CreateCommentArea { -moz-border-radius: 7px; -webkit-border-radius: 7px; padding: 5px 5px 5px 9px; }.js-CommentsArea .js-CreateCommentArea { background-color: #cbcbcb; }.js-OldComments { background-color: transparent; }.js-CreateCommentFieldsWrap { margin-left: -4px; background-color: #ececec; border: solid 1px #b0b0b0; padding: 4px; -moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; }.js-CreateCommentFields {zoom: 1; color: #404040; background-color: #e8e8e8; padding: 4px; -moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; }.js-PageNavTop { margin-bottom: 3px; }.js-PageNavBottom { margin-top: 3px; clear: both; }.js-PageNOther { text-decoration: none; }.js-PageNCur { font-weight: bold; }.js-PageArrowCur { opacity: 0.3; zoom:1; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=30); }.js-commentFieldSubject { font-weight: bold; margin-bottom: 5px;}.js-commentFieldLabel { margin-top: 5px; clear:both; margin-right: 0.5em;}.js-pmFieldLabel { margin-top: 5px; clear:both; margin-right: 0.5em; text-align: left;}.js-commentFieldNote { font-family: Verdana; font-size: 7pt; color: #808080; }.js-siteAdmin { font-weight: bold; }.js-singleComment { zoom: 1; font-size: 8pt; font-family: Verdana, Helvetica; border: solid 1px #c0c0c0; text-align: left; margin-bottom: -1px; }.js-singleCommentBg { zoom: 1; padding: 0.3em; }.js-singleCommentHeader { color: #484848; margin: 3px 0; }.js-singleCommentBody { clear: both; color: #404040; background-color: #fefefe; padding: 4px 4px 4px 8px; -moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; }table.js-singleCommentBodyT { margin: 0; padding: 0; font-family: Verdana, Helvetica; text-align: left; font-size: 8pt; color: #404040; }.js-singleCommentQuote { position:relative; top: 4px; font-family: "Times New Roman"; font-size: 32px; line-height: 24px; padding-right: 1px; display: none; }.js-singleCommentINFO { color: #808080; float: right; padding: 3px; margin-left: 2em; text-align: right;}.js-singleCommentAvatar { float: right; }.js-singleCommentAvatarCell { text-align: right; }.js-singleCommentText { padding-top: 4px; }.js-singleCommentName { font-weight: bold; text-decoration: underline; }.js-singleCommentUrl { margin: 0px 0px 0px 2px; padding: 0px; border: 0px; width: 10px; height: 10px; display: none; vertical-align: top; }.js-singleCommentDate { font-size: 7pt; }.js-singleCommentOrigin { display: none; bottom: 0.3em; font-size: 7pt; color: #808080; }.js-singleCommentKarmaComMod { clear: both; }.js-singleCommentKarma { float: left; font-size: 7pt; color: #808080; margin-right: 1em; padding-top: 3px; }.js-singleCommentKarmaShow { float: left; font-size: 7pt; color: #808080; margin-right: 2em; padding-top: 3px; display: none; }.js-singleCommentKarmaScore { display: none; }.js-singleCommentComMod { float: left; font-size: 7pt; color: #808080; display: none; padding-top: 3px; margin-right: 1em; }.js-singleCommentCtls { float: right; white-space: nowrap; }.js-singleCommentMenu { float: left; margin: -4px 15px 0px 0px;  white-space: nowrap; }.jskit-MenuTitle { cursor:pointer; padding: 3px; white-space: nowrap; color: #476cb8; font-size: 11px; width: 100%; }.jskit-MenuTitleMO { }.jskit-MenuTitlePressed { }.jskit-MenuTitleExpandMarker { width: 16px; height: 16px; margin: 1px 0px 0px -2px; }.jskit-MenuContainer { border: 1px solid #D6E2E9; background-color: #FFFFFF; cursor:pointer; position: absolute; margin-left: -2px; -moz-border-radius: 4px; -webkit-border-radius: 4px; z-index: 20000;}.jsk-MenuAdmin td, .js-kit-miniProfile-addAnotherSite td, .jskit-MenuContainer td, .js-singleCommentMenu td { padding: 0px !important; vertical-align: middle !important; border-collapse: separate !important; }.jsk-MenuAdmin table, .js-kit-miniProfile-addAnotherSite table, .jskit-MenuContainer table, .js-singleCommentMenu table { margin: 0px !important; border-collapse: separate !important; border: 0px solid !important; width: auto !important; }.jskit-MenuRootContainer { margin: 2px 0px 0px -3px; }.jskit-MenuRootHTML { float: left; height: 2em; }.jskit-MenuItem { border: 1px 0px solid #FFFFFF; line-height: 14px; }.jskit-MenuItemIcon { width: 16px; height: 16px; margin: 4px 6px; float: left; }.jskit-MenuItemCheckboxCnt { height: 24px; width: 65px; float: left; white-space: nowrap; margin: 0px; line-height: 14px;}.jskit-MenuItemTitle { margin: 5px 20px 4px 0px; color: #000000; font: 12px Arial; text-decoration: none; white-space: nowrap; zoom: 1;}.jskit-MenuItemEnding { height: 16px; margin: 2px; font-size: 14px; color: #000000; display: inline; font-family: Arial; }.jskit-MenuItemMO { background-color: #EDEDED; }.jskit-MenuItemMO .jskit-MenuDeleteButton { visibility: visible; }.jskit-MenuDelimeter { margin: 2px 0px; height: 1px; width: 100%; background-color: #CCCCCC; font-size: 1px; width: 100%; }.jskit-MenuItemInput { line-height: 16px; font: 12px Arial; padding: 0px; border: 1px solid #AAAAAA; height: 16px; margin: 3px 0px; width: 120px; position: absolute; }.jskit-MenuItemCheckbox { margin: 4px 4px 4px 10px; padding: 0px 8px; line-height: 16px; height: 16px; float: left; }.jskit-MenuDeleteButton { width: 16px; height: 16px; margin: 7px 0px 0px 2px; display: block; visibility: hidden; }div.js-singleCommentEdit, div.js-singleCommentReply, div.js-singleCommentDelete, div.js-singleCommentModerate { background: right top url(//js-kit.com/images/button-clear.png) no-repeat; height: 16px; font-size: 8pt; line-height: 9px; color: #404040; cursor: pointer; float: left; margin: 0 0.5em 0 4px; }div.js-singleCommentEdit div, div.js-singleCommentReply div, div.js-singleCommentDelete div, div.js-singleCommentModerate div { background: left top url(//js-kit.com/images/button-clear.png) no-repeat; height: 16px; padding: 2px 4px 0px 5px; position: relative; left: -1px; float: left; }.js-kit-lcf-miniProfile {  }.js-kit-lcf-miniProfile .js-kit-miniProfile-name-ipe, .js-kit-singleCmtProfileEnabled .js-kit-miniProfile-avatar, .js-kit-singleCmtProfileEnabled .js-kit-miniProfile-stats, .js-kit-singleCmtProfileEnabled .js-kit-miniProfile-viewDetails, .js-kit-singleCmtProfileEnabled .js-kit-miniProfile-name { cursor: pointer; }.js-kit-singleCmtProfileDisabled .js-kit-miniProfile-viewDetails { display: none; }.js-kit-lcf-miniProfile .js-kit-miniProfileNameWrap { padding-bottom: 5px; }.js-kit-lcf-miniProfile .js-kit-miniProfile-name, .js-kit-lcf-miniProfile .js-kit-miniProfile-siteLinksIcons { float: left; }.js-kit-lcf-miniProfile .js-kit-miniProfileSitesWrap { border-top: 2px dotted #E4E4E4; padding-top: 5px;  }.js-kit-lcf-miniProfile .js-kit-miniProfile-addAnotherSite { float: left; margin: 1px 0px 0px 0px; cursor: pointer; }.js-kit-lcf-miniProfile .js-kit-miniProfile-addAnotherSite span.text { color: #0066CC; margin-right: 5px; }.js-kit-lcf-miniProfile .js-kit-miniProfile-siteLinksIcons { border: 0px; }.js-kit-lcf-miniProfile .js-kit-miniProfile-name-ipe, .js-kit-lcf-miniProfile .js-kit-miniProfile-name-ipe-readonly { margin-right: 70px; height: 24px; line-height: 20px; }.js-kit-lcf-miniProfile .js-kit-miniProfile-logout { float: right; margin: 1px 0px 0px -70px; cursor: pointer; color: #0066CC; font-size: 10px;}.js-kit-lcf-miniProfile .js-kit-miniProfile-logoutIcon { float: left;  margin: 2px 0px 0px 5px; padding: 0px 5px; font-size: 8px; width: 10px; height: 10px; }.js-kit-lcf-miniProfile .js-kit-miniProfile-logoutLink { float: left;  }.js-kit-lcf-extraControlsMenuWrapper { float: left; }.js-CreateComment .js-kit-tabs-singleTab { display: block; }.js-CreateComment .js-kit-tab { padding: 5px 0px 5px 0px; margin-right: 20px; background: transparent; cursor: pointer; }.js-CreateComment .js-kit-tab-title { color: #0066CC; }.js-CreateComment .js-kit-tab .js-kit-tab-expandMarker { float: left; width: 16px; height: 16px; }.js-kit-lcf-extraControlsMenuContent { border: 1px solid #BBBBBB; background: #FFFFFF; margin-top: 10px; }.js-kit-images-wrapper, .js-kit-follow-wrapper { padding: 10px;  }.js-kit-images-form { margin: 20px 0px; }.js-kit-images-form .js-uploadImageForm { display: inline; }.js-kit-images-form .js-uploadImageInputLabel { display: inline; margin-right: 5px; font-size: 12px; }.js-kit-images-form .js-kit-images-imgSizeSpec { display: none; }table.js-kit-follow-table-wrapper { width: 98%; border: 0px solid #FFFFFF; line-height: normal; }table.js-kit-follow-table-wrapper tr, table.js-kit-follow-table-wrapper td { padding: 2px; margin: 0px; border: 0px solid #FFFFFF; vertical-align: top; }.js-kit-follow-emailCheckboxWrap { vertical-align: top; margin: 0px; padding: 2px 2px 2px 2px !important; width: 20px; }.js-kit-follow-emailCheckbox { margin: 0px; padding: 0px; }.js-kit-follow-rssThreadButton { padding: 0px; margin-left: 5px; cursor: pointer; }tr.js-kit-follow-rssControlsWrap, tr.js-kit-follow-rssControlsWrap td { padding-top: 0px !important; }tr.js-kit-follow-rssLabelsWrap, tr.js-kit-follow-rssLabelsWrap td { padding-bottom: 0px !important; }.js-kit-follow-label { font-size: 12px; font-weight: bold; }.js-kit-follow-description { font-size: 11px; color: #888888; }.js-kit-follow-emailIcon, .js-kit-follow-rssIcon { width: 16px; height: 16px; margin-left: 2px; }.js-kit-follow-emailIconWrap, .js-kit-follow-rssIconWrap { width: 25px; vertical-align: top; }.js-kit-follow-extra { width: 80px; }.js-kit-follow-input { width: 100%; }.js-singleCommentNotice { color: #ff0000; font-size: 8pt; }.js-commentControl { float: left; margin-right: 2em; }.js-commentFieldInput { border: solid 1px #7f99b9; width:100%;}.js-commentFieldInputProfile { border: solid 1px #7f99b9; width:100% !important;}.js-CmtButton { margin-right: 0.5em }.js-CCButtons { margin: 0.3em 0 0.5em 0 }.js-CCButtons INPUT { font-size: 8pt; }.js-poweredBy { margin-top: 2pt; color: #808080; font-size: 7pt; font-family: Verdana, Helvetica; }.js-poweredBy A, .js-poweredBy A .js-poweredBy-text { text-decoration: none; color: #8080a0 !important; cursor: pointer; }.js-antispamBy { text-align: right; }.js-Progress { position: absolute; visibility: hidden; right: 5px; top: 5px; width: 15px; height: 15px; }.js-SettingsWindow { padding: 0.3em; border: solid 1px #cccccc; color: #404040; white-space: normal; font-family: Verdana, Helvetica; font-size: small; z-index: 400; }.js-SettingsWindowNolc { z-index: 14400 }.js-SettingsWindowHeader { text-align:center; padding: 5px 0; margin-bottom: 5px; background-color: #e6e9ec; font-size: 10pt; font-family: Verdana, Helvetica; color: #435362}.js-ControlBlockText, .js-ControlBlockTextDisabled {font-size: 8pt; text-align: left;}.js-ControlBlockButton {font-size: 8pt;}.js-ControlBlockTextDisabled {color: #808080}.js-showBorder {border:ridge 2px #a0a0a0;}.js-hideBorder {border:solid 2px #fefefe;}.js-SearchTitle {margin-right: 5px;}.js-SearchWords {padding: 0px; margin-right: 5px; border-bottom: 1px dashed #0000ff}.js-uploadAvatarForm {margin-top: 0px;}.js-singleCommentConversationHead {padding: 0.3em; margin-top: 26px !important;}.js-singleCommentConversationChild {padding: 0.3em; margin-top: -1px !important}.js-Conversation {padding: 0.3em; position: relative; top: -20px; display: inline; }.js-ConversationWrapper { height: 0px; }.js-TornPageTop { margin-left: -5px; margin-right: -5px; height: 11px; margin-top: -5px; background: url(//js-kit.com/images/tornPaperT.gif) no-repeat; }.js-TornPageBottom { margin-left: -5px; margin-right: -5px; height: 11px; margin-bottom: -5px; background: url(//js-kit.com/images/tornPaperB.gif) no-repeat; }.js-TornPageTopImg {  margin-top: -5px; height: 11px; width: 100%; }.js-TornPageBottomImg {  margin-bottom: -5px; height: 11px; width: 100%; }.js-TornPageDivider { margin-left: -5px; margin-right: -5px;margin-bottom: -1px; height: 22px; background-color: #CBCBCB; }.js-TornPageDividerTop { height: 10px; background-color: #ECECEC; border: solid 1px #b0b0b0; border-top-width: 0; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; margin-bottom: 6px; }.js-TornPageDividerBottom { height: 10px; background-color: #ECECEC; border: solid 1px #b0b0b0; border-bottom-width: 0; -moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; }.js-commentBodyLabel { clear: both; }.js-CreateCommentFieldsBaseInfo { float: right; margin-bottom : 5px; width: 100%; }.js-commentCmtTextarea { clear: both; }.js-commentAvatar { position: relative; float: right; margin-left : -102px; border: 1px solid #c0c0c0; width: 100px; height:100px; }.js-commentAvatarArea { clear: both; margin : 5px 0px 10px 0px; }.js-kit-lcf-avatarsManagerWrapper { float: left; position: relative; width: 64px; height: 64px; margin-right: 10px; margin-right: -75px; }.js-kit-basicUserInfoWrap { float: left; width: 100%; }.js-kit-lcf-userInfoWrapper {  }.js-kit-nonLoggedUserInfo .js-kit-lcf-fromMenuAnonymous, .js-kit-nonLoggedUserInfo .js-kit-lcf-toMenu, .js-kit-nonLoggedUserInfo .js-kit-fromMenuAnonymous { margin-left: 75px; }.js-kit-from-to-menu-title { margin: 5px 8px 0px 8px; font-weight: bold; font-size: 10px; }.js-kit-from-to-menu-footer { margin-top: 8px; }.js-kit-lcf-toMenu { margin: 9px 0px; }.js-kit-lcf-toField, .js-kit-from-menuAnonymousWrap { background-color: #FFFFFF; border: 1px solid #BBBBBB; }.js-kit-from-menuAnonymousWrap {  }.js-kit-lcf-toField .jskit-MenuRootHTML { cursor: pointer; }.js-kit-from-menuAnonymousWrap .jskit-MenuRootHTML { cursor: pointer; }.js-kit-from-control { float: left; margin-right: -60px; position: relative; }.js-kit-from-field { float: left; width: 100%; height: 26px; }.js-kit-from-name { margin: 5px 0px 0px 56px; font-size: 14px; cursor: pointer; border: 0px; width: 15em; line-height: 14px;}.js-kit-from-name input.jsipe-input { margin: 0px; padding: 0px; border: 0px; background: #FFFFFF; outline: 0px; font-size: 14px !important; }.js-kit-loggedUserInfo { margin-left: 0px; }.js-CmtSpam { background: url(//js-kit.com/images/bio-hazard.gif) bottom right repeat-x !important; background-color: #ffffe0 !important; color: #404040; }.js-previewImageDescr { width: 102px; left: 0px; bottom: 0px; }.js-previewImage { position: relative; text-align: center; margin: 4px; float: left; width: 102px; }.js-all-previewImages {margin-top: 15px; border-top: 1px solid #ececec; border-bottom: 1px solid #ececec; }.js-all-previewImages .js-previewImage { position: static;  }.js-uploadImageButton { float: left; color: blue; cursor: pointer; }.js-previewImageTitle { background-color: #ececec; font-size: 7pt; float: left;}.js-uploadImageInputWrapper2 { margin: 0; padding: 0; position: absolute; top: 0px; left: 0px;}.js-uploadImageInputWrapper1 {position: relative;}.js-uploadGreyDescr { color: #c0c0c0; }.js-uploadImageIcon { height: 16px; vertical-align: middle; margin-right: 5px; }.js-CommentsPopupLink { cursor: pointer; }.js-kit-popupComments { z-index: 13900 !important; }.js-kit-popupComments .js-CommentsArea { padding: 7px }.js-kit-popupComments .js-LeaveComment { font-family: Arial; font-size: 11pt; }</style><style id="js-wbr-css" type="text/css">.js-singleCommentTEXT{word-wrap:break-word}</style><style id="js-comments-skin-smoothgray-css" type="text/css">.js-CommentsSkin-smoothgray .js-OldCommentsWrap {zoom:1; margin-bottom: 1px; clear: both; background-color: #cbcbcb; -moz-border-radius: 7px; -webkit-border-radius: 7px; padding: 5px; }.js-CommentsSkin-smoothgray .js-OldComments { background-color: #ececec; border: solid 1px #b0b0b0; padding: 4px; -moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; }.js-CommentsSkin-smoothgray .js-singleComment { border-style: none; margin: 0px; ; background: transparent; }.js-CommentsSkin-smoothgray .js-PageNOther { font-weight: bold; color: #0066cc; text-decoration: none; } .js-CommentsSkin-smoothgray .js-PageNCur { color: #fe9600; } .js-CommentsSkin-smoothgray .js-OldComments .js-CreateCommentArea { background-color: transparent; }.js-CommentsSkin-smoothgray .js-OldComments .js-singleCommentName { color: #0066cc; }.js-CommentsSkin-smoothgray .js-singleCommentBody { clear: both; color: #404040; background-color: #fefefe; padding: 4px 4px 4px 8px; -moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; }.js-CommentsSkin-smoothgray .js-singleCommentCtls { float: right; }.js-CommentsSkin-smoothgray .js-singleCommentBg { zoom: 1; padding: 0.3em; position: relative; }</style><style id="js-comments-skin-haloscan-css" type="text/css">.js-CommentsSkin-haloscan .js-singleComment { font-size: 11px; font-family: Verdana, Helvetica; border: none; zoom: 0; }.js-CommentsSkin-haloscan .js-singleCommentCtls { float: right; white-space: nowrap; }.js-CommentsSkin-haloscan .js-singleCommentAvatar { padding-bottom: 1em }.js-CommentsSkin-haloscan .js-LeaveComment { text-align: center; }.js-CommentsSkin-haloscan .js-commentControl, .js-CommentsSkin-haloscan .js-commentTool, .js-CommentsSkin-haloscan .js-poweredBy, .js-CommentsSkin-haloscan .js-poweredBy div { display: inline; float: none; }.js-CommentsSkin-haloscan .js-antispamBy { display: block; }.js-CommentsSkin-haloscan .js-CreateCommentBg { width: 30em; margin-top: 1em; margin-left: auto; margin-right: auto; padding: 0.5em; text-align: left; float: none; border: none; }.js-CommentsSkin-haloscan .js-singleCommentBg { padding: 0em }</style><style id="js-comments-skin-echo-css" type="text/css">.js-CommentsSkin-echo .jsk-ThreadWrapper { margin-bottom: 1em; padding: 10px; -moz-border-radius: 0.5em; -webkit-border-radius: 0.5em;  }.js-CommentsSkin-echo .jsk-StreamWrapper { margin-bottom: 1em; background: url(//js-kit.com/images/dot-gray.png) repeat-x bottom; }.js-CommentsSkin-echo .jsk-HeaderWrapper { padding-top: 1em; padding-bottom: 1em; }.js-CommentsSkin-echo textarea.js-CmtText-noWYSIWYG, .js-CommentsSkin-echo textarea.js-CmtTextEdit-noWYSIWYG { border: 0px; background: #FFFFFF; }.js-CommentsSkin-echo .jsk-CommentFormBody-noWYSIWYG, .js-CommentsSkin-echo .jsk-CommentEditFormBody-noWYSIWYG {  border: 1px solid #BBBBBB; padding: 5px 7px; background: #FFFFFF; }.js-CommentsSkin-echo .js-commentTool { display: none; }.js-CommentsSkin-echo .js-singleCommentAvatar { background-position: center; }.js-PageMore { text-align: center; border: solid 1px #E4E4E4; padding: 10px; -moz-border-radius: 0.5em; -webkit-border-radius: 0.5em; font-weight: bold; background-color: #FFFFFF; }.jsk-HeaderInfoBox { float: left; }.jsk-HeaderInfoBoxImg { float: left; padding: 0px; width: 16px; height: 16px; }.jsk-CommentsCountWrap { float: left;  padding: 0px; margin-left: 5px; line-height: normal !important; }.jsk-CommentsCount { font-weight: bold !important; }.jsk-HeaderMenu { float: right; width: 112px; }.jsk-MenuAdmin { float: right; }.jsk-MenuAdmin .jskit-MenuItem { text-align: left; }.jsk-ItemWrapper { padding-bottom: 1em; padding-top: 1em; background: url(//js-kit.com/images/dot-gray.png) repeat-x top; line-height: 150%; }.jsk-ItemUserAvatarWrapper { float: left; padding: 2px; }.jsk-ItemContentWrapper { margin-left: 10px }.jsk-ItemFooter { text-align: left; }.jsk-ItemAttachmentsTitle { float: left; line-height: 100%; font-size: 0.8em; padding: 1px; }.jsk-ItemAttachmentIconWrapper { padding: 5px; border: 1px solid #ECECEC; }.jsk-ItemAttachmentWrapper { float: left; margin: 0px; margin: 5px 12px 5px 12px; text-align: center; width: 110px; }.js-singleCommentAdminStar { border: 0; width: 16px; height: 16px; vertical-align: middle; display: none; }.jsk-CommentFormSurface { zoom: 1; -moz-border-radius: 0.5em; -webkit-border-radius: 0.5em; border: 1px solid #dddddd; padding: 11px; line-height: normal; }.jsk-CommentFormAvatar { float: left; }.jsk-CommentFormFooter { margin-top: 11px; width: 100%; }.jsk-CommentFormAvatarsArea { border: 1px solid #bbbbbb; margin: 0em 0em 0.6em 0em; padding: 0.3em; }.jsk-CommentFormAvatarsArea .jsk-avt-section-label { font-weight: bold; font-size: 12px; }.jsk-CommentFormAvatarsArea .jsk-avt-upload-label { font-size: 8pt; }.jsk-CommentFormInputsWrapper { padding-left: 113px; margin-bottom: 11px; }.jsk-CommentFormButton { margin-left: 0.5em; }.jsk-CommentFormWrapper { margin-bottom: 1em; }.jsk-PagerWrapper { width: 100%; text-align: center; padding: 0.75em 0px; }.jsk-Pager { border: 0; margin: 0; padding: 0; display: inline; }.jsk-Pager li { border:0; margin:0; padding:0; list-style:none; display: inline; margin-left: 3px; }.jsk-Pager a { border: solid 1px #DDDDDD; }.jsk-Pager .jsk-PrevOff, .jsk-Pager .jsk-NextOff { color:#666666; padding: 5px 8px; }.jsk-Pager .jsk-Prev a, .jsk-Pager .jsk-Next a { border:solid 1px #DDDDDD; }.jsk-Pager .jsk-Active { color:#ff0084; font-weight:bold; padding: 5px 8px; }.jsk-Pager a:link, .jsk-Pager a:visited { color:#0063e3; padding: 4px 7px; text-decoration:none; }.jsk-Pager a:hover { border:solid 1px #666666; }.jsk-PrimaryBackgroundColor { background-color: #FFFFFF; }.jsk-SecondaryBackgroundColor { background-color: #f4f4f4; }.jsk-PrimaryHighlightColor { color: #fffea9; }.jsk-SecondaryHighlightColor { color: #ffff00; }.jsk-PrimaryFontColor { color: #3a3a3a; }.jsk-SecondaryFontColor, .jsk-ThreadWrapper a.jsk-SecondaryFontColor { color: #c6c6c6; }.jsk-ThreadWrapper a, .jsk-LinkColor { color: #476cb8; }.jsk-H1Color { color: #878487; }.jsk-PrimaryFont, .jsk-CommentFormSurface input { font-family: Lucida grande, Tahoma, Verdana, Arial; }.jsk-PrimaryFont { font-size: 8pt; font-weight: normal; }.jsk-H1Font { font-size: 1.38em; font-weight: bold; line-height: 1.4em; }.jsk-LinkFont, .jsk-ThreadWrapper a, .jsk-ThreadWrapper a:hover { text-decoration: none; font-weight: normal; }.jsk-DisabledFontColor { color: #cccccc; }.jsk-ItemName { font-weight: bold; }input.jsk-CommentFormButton { font-size: 1.25em; }.jsk-HeaderMenu table td { border-spacing: 0; padding: 0; margin: 0; vertical-align: middle; height: 16px; }.jsk-HeaderMenu table td .js-singleCommentMenuTitleExpandMarker { margin: 0; padding: 0; }.jsk-HeaderMenu .js-singleCommentMenuTitle { padding: 0; margin: 0; }.js-CommentsSkin-echo .js-poweredBy { font-family: Arial; font-size: 9px; color: #bbbbbb; margin-top: 1.2em; white-space: nowrap; line-height: normal; text-align: right; }.js-CommentsSkin-echo .js-poweredBy-wrapper { float: right; }.js-CommentsSkin-echo .js-poweredBy-logo {  border: none; margin-left: 5px; height: 14px; width: 25px; float: right; }.js-CommentsSkin-echo .js-poweredBy-text { float: right; }.js-CommentsSkin-echo .js-commentAvatar { margin: 0; }.js-CommentsSkin-echo .js-commentFieldInput { outline: 0px; border: 0px solid; width: 100%; }.js-CommentsSkin-echo .js-commentFieldLabel { clear: none; margin: 0; }.js-CommentsSkin-echo .js-authSelector { float: none; }.js-CommentsSkin-echo .js-singleComment { border: none; }.js-CommentsSkin-echo .js-singleCommentBg { padding: 0; position: static; }.js-CommentsSkin-echo .js-singleCommentCtls { float: left; white-space: normal; }.js-CommentsSkin-echo .js-singleCommentDate { font-size: 1em; }.js-CommentsSkin-echo .js-previewImageDescr { width: 110px; }.js-CommentsSkin-echo .jsk-ItemAge { float: left; margin: 0 0.5em 0 0; }.js-singleViaLinkWrapper { text-align: right; float: right; margin-right: 7px; }.js-singleCommentViaIcon {  border: 0; margin: 0.1em 0.3em 0 0.3em; width: 16px; height: 16px; float: right; }.js-singleViaText {  margin-bottom: 0.5em; white-space: nowrap; float: right; }table.mceToolbar { width: auto !important; }table.mceLayout td { padding: 0px !important; }</style><style type="text/css">.js-kit-lcf-Border { border: 1px solid #BBBBBB; overflow: hidden; }.jskit-GoogleLikeMenuBar { width: 50px; height: 26px; border-right: 1px solid #BBBBBB; font-size: 12px; line-height: 26px; cursor: pointer; text-align: right; padding-right: 3px; white-space: nowrap; }.jskit-GoogleLikeMenuBarExpandMarker { float: right; line-height: 12px; height: 10px; width: 10px; margin: 9px 0px 0px 1px; }.jskit-GoogleLikeMenuBarText { float: right; font-weight: bold; }.jskit-Dogtag { background-color: #E2E9FF; float: left; margin: 1px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border: 1px solid #88AADD; white-space: nowrap; height: 22px; }.jskit-DogtagIcon { width: 16px; height: 16px; margin: 3px; float: left; }.jskit-DogtagCross { width: 10px; height: 10px; margin: 6px 5px 6px 0px; float: left; cursor: pointer; line-height: 10px; }.jskit-DogtagText { float: left; margin: 4px 7px 3px 2px; font-size: 11px;  }.js-nsgecko { -moz-user-select: none; }</style><style id="js-jska-css" type="text/css">.jska-backdrop { opacity: 0; background-color: #404040; z-Index: 14500; width: 100%; position: fixed; left: 0; top: 0; height: 100%; -webkit-transition: opacity 0.5s ease-out;}.jska-wrapper { position: absolute;background-color: white; z-index: 20000; border: solid 4px #cbcbcb; text-align: left; width: 350px; font-weight: normal; }.jska-facebookFrame { height: 27px; width: 194px; background-color: transparent; border: none; z-Index: 14000; }.jska-yahoo { margin-left: auto; margin-right: auto; width:161px; height:22px; cursor:pointer; }.jska-twitter { margin-left: auto; margin-right: auto; width:176px; height:28px; cursor:pointer; }.jska-friendfeed { margin-left: auto; margin-right: auto; width:216px; height:28px; cursor:pointer; }.jska-selector { margin-left: 5px;}.jska-header { background-color: #ececec; padding: 8px 0 6px 10px; }.jska-headerText { font-family: Verdana, Helvetica; font-weight: bold; font-size: 12pt; color: grey; float: left; }.jska-infoText { margin: 0; padding: 0;}.jska-infoContainer { margin: 0 10px;}.jska-showMore { color: #403030; font-family: Arial, Helvetica, sans-serif; }.jska-selectorContainer { background-color: #ececec; padding: 0 0 4px 10px;}.jska-container { border-top: solid 1px #cbcbcb; padding-top: 20px;}.jska-controls { background-color: #ececec; width: 100%; padding: 5px 0 5px 0; margin-top: 20px;}.jska-rightColumn { float: right; width: 65%; margin-bottom: 2px;}.jska-leftColumn { float: right; width: 33%; padding: 2px 5px 0 0; text-align: right;}.jska-label { font-size: 9pt; font-family: Arial; color: #000000 !important; }.jska-input { border: solid 1px #7f99b9; width: 80%;}.jska-openidInput { background: url(//js-kit.com/images/openid-16x16.png) no-repeat; background-position: 0 50%; padding-left: 18px;}.jska-blogspotInput { background: url(//js-kit.com/images/blogger-16x16.png) no-repeat; background-position: 0 50%; padding-left: 18px;}.jska-errorText { color: #FF3030; font: 11px Arial; margin-bottom: 2px; }.jska-error { color: #FF3030; font: 11px Arial; display: none; }.jska-cancelBtn { float: right; margin-right: 5px; cursor: pointer;}.jska-text { color: #404040; font: 11px Arial; }.jska-back { font: 15px Helvetica; cursor: pointer; margin-left: 10px; float: left;}.jska-logout { float: left; margin-left: 10px; cursor: pointer;}.jska-passwordRecoveryText { margin: 0px 0px 5px 10px; }.jska-forgotPassword{ color: #001faa; cursor: pointer; }a.jska-forgotPassword:hover {color: #001faa;}a.jska-forgotPassword:visited {color: #001faa;}.jska-linkToLogin{ color: #001faa; cursor: pointer; }.jska-progressArea { display: none; }.jska-progressPic { display: inline; float: left; margin-right: 0.2em; margin-left: 1em; margin-top: 0.3em; width: 16px; height: 16px; background: no-repeat url(//js-kit.com/images/loading.gif); }.jska-progressLbl { display: inline; margin-left: 0.3em; margin-top: 0.5em; float: left; }.jska-authButton {float: right; margin-right: 7px; cursor: pointer;}.jska-clear { clear: both;}</style><style id="js-avatars-css" type="text/css">.jsk-avt-container { float: left; display: inline-block; margin: 2px; width: 118px; text-align: center; }.jsk-avt-wrapper { margin: 2px; width: 114px; height: 114px; background-position: top center; }.jsk-avt-control { padding: 2px 5px 0px 5px; font-family: Helvetica, Verdana; font-size: 8pt; height: 14px; }.jsk-avt-control-selected { text-align: center; }.jsk-avt-control-remove { text-align: center; cursor: pointer; text-decoration: underline; }.jsk-avt-upload-label { font-size: 12px; }.jsk-avt-upload-form { margin: 0px; }.jsk-avt-noAvatarsMsg { font-style: italic; padding: 10px; }.jsk-avt-dataLoading { text-align: center; font-style: italic; margin: 10px; font-size: 12px; }.js-showBorder { border:ridge 2px #a0a0a0; }.js-hideBorder { border:solid 2px #fefefe; }.js-kit-clear { clear: both; }</style><style id="js-tabsManagement-css" type="text/css">.js-kit-tab {  float: left; cursor: pointer; margin: 0; font-size: 14px; background: transparent; padding: 5px 10px 5px 10px; }.js-kit-tab-icon { float: left; width: 17px; height: 17px; margin: 0px 5px 0 0; }.js-kit-tab-title { font-size: 12px; float: left; }.js-kit-tab-active { font-weight: bold; cursor: text; background: #FFFFFF; }.js-kit-tabs-singleTab { display: none; }.js-nsgecko { -moz-user-select: none; }.js-kit-clear { clear: both; }</style></head><body onload="load()"><div style="display: none;" class="jska-wrapper"><div class="jska-header"><div class="jska-headerText">Authentication</div><div class="jska-clear"></div></div><div class="jska-selectorContainer jska-label">Login with:<select class="jska-selector"><option value="register">New JS-Kit account</option><option value="gfc" selected="true">Google Friend Connect</option><option value="twitter">Twitter account</option><option value="friendfeed">FriendFeed account</option><option value="yahoo">Yahoo account</option><option value="blogspot">Blogspot URL</option><option value="jskit">JS-Kit account</option><option value="haloscan">Haloscan account</option><option value="openid">OpenID</option></select></div><div class="jska-container"></div></div>
+    <div id="TopBar"> <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_right"> 
+                            <a target="_blank" href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="http://java.sun.com/docs/books/tutorial/search.html" target="_blank">Search the
+                                Tutorials</a>
+                            <br>
+                            <a style="display: inline;" href="javascript:toggleLeft()" id="ToggleLeft">Hide the TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+    <div class="PrintHeaders">
+        <b>Trail:</b> Deployment
+        <br><b>Lesson:</b> Applets
+        <br><b>Section:</b> Getting Started With Applets
+    </div>
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/index.html">Applets</a></div>
+<div class="linkAHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/getStarted.html">Getting Started With Applets</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/subclass.html">Defining an Applet Subclass</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/appletMethods.html">Methods for Milestones</a></div>
+<div class="nolinkBHEAD">Life Cycle of an Applet</div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/appletExecutionEnv.html">Applet's Execution Environment</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/developingApplet.html">Developing an Applet</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/deployingApplet.html">Deploying an Applet</a></div>
+<div class="linkCHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/html.html">Deploying With the Applet Tag</a></div>
+<div class="linkAHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/doingMoreWithApplets.html">Doing More With Applets</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/data.html">Finding and Loading Data Files</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/param.html">Defining and Using Applet Parameters</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/showStatus.html">Displaying Short Status Strings</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/browser.html">Displaying Documents in the Browser</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/invokingJavaScriptFromApplet.html">Invoking JavaScript Code From an Applet</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/invokingAppletMethodsFromJavaScript.html">Invoking Applet Methods From JavaScript Code</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/manipulatingDOMFromApplet.html">Manipulating DOM of Applet's Web Page</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/stdout.html">Writing Diagnostics to Standard Output and Error Streams</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/iac.html">Sending Messages to Other Applets</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/server.html">Working With a Server-Side Application </a></div>
+<div class="linkCHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/clientExample.html">Network Client Applet Example</a></div>
+<div class="linkBHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/security.html">What Applets Can and Cannot Do</a></div>
+<div class="linkAHEAD"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/problemsindex.html">Solving Common Applet Problems</a></div>
+<div class="linkQUESTIONS"><a href="http://java.sun.com/docs/books/tutorial/deployment/applet/QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+            <span id="BreadCrumbs">
+                <a href="http://java.sun.com/docs/books/tutorial/index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="http://java.sun.com/docs/books/tutorial/deployment/index.html" target="_top">Deployment</a>
+                &gt;
+                <a href="http://java.sun.com/docs/books/tutorial/deployment/applet/index.html" target="_top">Applets</a>
+            </span>
+            <div class="NavBit">
+                <a target="_top" href="http://java.sun.com/docs/books/tutorial/deployment/applet/appletMethods.html">«&nbsp;Previous</a>&nbsp;&#8226;&nbsp;<a target="_top" href="http://java.sun.com/docs/books/tutorial/deployment/TOC.html">Trail</a>&nbsp;&#8226;&nbsp;<a target="_top" href="http://java.sun.com/docs/books/tutorial/deployment/applet/appletExecutionEnv.html">Next&nbsp;»</a>
+            </div>
+            <div id="PageTitle">Life Cycle of an Applet</div>
+            <blockquote>
+<p>An applet can react to major events in the following ways:
+</p><ul>
+<li> It can <em>initialize</em> itself.
+</li><li> It can <em>start</em> running.
+</li><li> It can <em>stop</em> running.
+</li><li> It can perform a <em>final cleanup</em>,
+     in preparation for being unloaded.
+</li></ul>
+<p></p>
+
+<p> This section 
+introduces a new applet, <code>Simple</code>, that uses all of these methods. 
+Unlike Java applications, applets do <em>not</em> need to implement a 
+<code>main</code> method.
+</p>
+<p>
+Here is the <code>Simple</code> applet.
+</p>
+
+<script src="lifeCycle_files/deployJava.js"></script>
+<script> 
+        var attributes = { code:'Simple.class', archive:'examples/dist/applet_Simple/applet_Simple.jar',  width:500, height:20} ; 
+        var parameters = {} ; 
+        deployJava.runApplet(attributes, parameters, '1.4'); 
+</script><applet code="lifeCycle_files/Simple.class" archive="lifeCycle_files/applet_Simple.jar" height="20" width="500"><param name="codebase_lookup" value="false"></applet>
+
+<blockquote><hr><strong>Note:</strong> If you don't see the example
+running, you might need to enable the JavaScript interpreter in your
+browser so that the Deployment Toolkit script can function properly.<hr></blockquote>
+<p>
+The following is the source code for the <code>Simple</code> applet.
+This applet displays a descriptive string
+whenever it encounters a major milestone in its life, such as when the user 
+first visits the page the applet is on. 
+</p>
+
+<blockquote><pre>
+
+import java.applet.Applet;
+import java.awt.Graphics;
+
+//No need to extend JApplet, since we don't add any components;
+//we just paint.
+public class Simple extends Applet {
+
+    StringBuffer buffer;
+
+    public void init() {
+        buffer = new StringBuffer();
+        addItem("initializing... ");
+    }
+
+    public void start() {
+        addItem("starting... ");
+    }
+
+    public void stop() {
+        addItem("stopping... ");
+    }
+
+    public void destroy() {
+        addItem("preparing for unloading...");
+    }
+
+    private void addItem(String newWord) {
+        System.out.println(newWord);
+        buffer.append(newWord);
+        repaint();
+    }
+
+    public void paint(Graphics g) {
+	//Draw a Rectangle around the applet's display area.
+        g.drawRect(0, 0, 
+		   getWidth() - 1,
+		   getHeight() - 1);
+
+	//Draw the current string inside the rectangle.
+        g.drawString(buffer.toString(), 5, 15);
+    }
+}
+</pre></blockquote>
+
+<blockquote><hr><strong>Note:</strong>&nbsp;In this example, the <code>Applet</code> class is extended, not the 
+Swing <code>JApplet</code> class, as Swing components do not need to be added 
+to this applet. 
+<hr></blockquote>
+
+
+<a name="loading"><h4>Loading the Applet</h4></a>
+<p>As a result of the applet being loaded, you should see the text
+"initializing... starting...". 
+When an applet is loaded, here's what happens:
+</p><ul>
+<li> An instance of the applet's controlling class (an <code>Applet</code> subclass) is created.
+</li><li> The applet initializes itself.
+</li><li> The applet starts running.
+</li></ul>
+<p></p>
+
+<a name="leaving"><h4>Leaving and Returning to the Applet's Page</h4></a>
+<p>When the user leaves the page, for example, to go to another page, 
+the browser stops and destroys the applet. The state of the 
+applet is not preserved. When the user 
+returns to the page, the browser intializes and starts a new instance of the applet.  
+</p>
+
+
+<a name="reloading"><h4>Reloading the Applet</h4></a>
+<p>When you refresh or reload a browser page, the current instance of the applet 
+is stopped and destroyed and a new instance is created.
+</p><p>
+
+
+<a name="quitting"><h4>Quitting the Browser</h4></a>
+</p><p>
+When the user quits the browser,
+the applet has the opportunity to stop itself and perform a final cleanup 
+before the browser exits.
+</p>
+
+<p>
+<a class="OutsideLink" target="_blank" href="http://java.sun.com/docs/books/tutorial/deployment/applet/examplesIndex.html#Simple">Download source code</a> for the <em>Simple Applet</em> example to experiment further.
+</p>
+
+        </blockquote>
+        <div class="NavBit">
+            <a target="_top" href="http://java.sun.com/docs/books/tutorial/deployment/applet/appletMethods.html">« Previous</a>
+            &#8226;
+            <a target="_top" href="http://java.sun.com/docs/books/tutorial/deployment/TOC.html">Trail</a>
+            &#8226;
+            <a target="_top" href="http://java.sun.com/docs/books/tutorial/deployment/applet/appletExecutionEnv.html">Next »</a>
+        </div>
+    </div>
+    <div id="Footer">
+<hr>
+<div id="TagNotes"><font face="sans-serif" size="1">
+    Problems with the examples? Try <a target="_blank" href="http://java.sun.com/docs/books/tutorial/information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank" href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+</font></div> 
+
+<div id="Footer">
+<p><font face="sans-serif" size="1"><a name="license_info">Your use of this</a> page <a href="http://java.sun.com/docs/books/tutorial/">(http://java.sun.com/docs/books/tutorial</a> (Last Updated <a href="http://java.sun.com/docs/books/tutorial/information/history.html">9/23/2009</a>))
+and all the material on pages under "The Java Tutorials" banner is
+subject to the <a href="http://developers.sun.com/global/termsofuse.html#g2_12">Terms of Use</a>.
+Additionally, (i) any example code contained in any of these Java
+Tutorials pages is also licensed under the
+<a href="http://developers.sun.com/license/berkeley_license.html">Code
+Sample License</a>, and (ii) the entire Java Tutorials content is available for
+download under the Java Tutorials Limited Non-Commercial License
+for limited, non-commercial individual and/or research and instructional use at
+<a href="https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=tutorial-2009_09_23-oth-JPR@CDS-CDS_Developer">Sun Download Center</a>.</font></p>
+
+<!--
+-->
+<table border="0" cellpadding="5" cellspacing="0" width="100%">
+    <tbody><tr>
+         <td width="20%">
+	 <table border="0" cellpadding="5" cellspacing="0" width="100%">
+            <tbody><tr>
+              <td align="center"><img id="duke" src="lifeCycle_files/DukeWave.gif" height="55" width="55"></td>
+              <td align="left" valign="middle"><img id="sun" src="lifeCycle_files/logo_sun_small_sdn.gif" height="29" width="61"></td>
+           </tr>
+          </tbody></table>
+          </td>
+
+          <td align="center" valign="middle" width="55%">
+		<font color="#7e9cb1" size="1"><a href="http://developers.sun.com/global/aboutsun.html">About Sun</a> | <a href="http://developers.sun.com/global/aboutsdn.html">About This Site</a> | <a href="http://developers.sun.com/global/termsofuse.html">Terms of Use</a> | <a href="http://developers.sun.com/global/trademarks.html">Trademarks</a></font><font color="#7e9cb1">&nbsp;</font> 
+	 </td>
+          <td align="right" valign="middle" width="25%">
+		<font color="#4b7592" size="2"><strong>A Sun Developer Network Site</strong></font><br>
+      		<font size="1"><a href="http://java.sun.com/docs/books/tutorial/information/copyright.html">Copyright</a></font> <font color="#4b7592" size="2">1995-2009 Sun Microsystems, Inc.</font>
+	 </td>
+     </tr>     
+</tbody></table>
+</div>
+    </div>
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Methods for Milestones
+        <br><b>Next page:</b> Applet's Execution Environment
+    </div>
+<div>
+    <hr>
+    <div><b><a name="action">Discuss</a></b></div>
+    <div>We welcome your participation in our community.  Please keep your comments
+    civil and on point.  You may optionally provide your email address to
+    be notified of replies &#8212; your information is not used for any other
+    purpose.  By submitting a comment, you agree to these
+    <a href="http://www.sun.com/termsofuse.jsp">Terms of Use</a>.</div>
+    <p>
+    </p><div style="display: block; visibility: visible;" id="" class="js-kit-comments js-CommentsSkin-echo" permalink=""><script src="lifeCycle_files/comments-data.js" charset="utf-8"></script><div class="js-CommentsArea"><div class="jsk-HeaderWrapper jsk-PrimaryFont"><div class="jsk-HeaderInfoBox"><div style="background-image: url(//js-kit.com/images/echo.png); background-repeat: no-repeat;" class="jsk-HeaderInfoBoxImg"></div><div class="jsk-CommentsCountWrap jsk-CommentsCount jsk-H1Color jsk-H1Font">Echo&nbsp;<span class="jsk-CommentsCount jsk-SecondaryFontColor jsk-PrimaryFont">0 Items</span></div><div class="js-kit-clear"></div></div><div class="jsk-HeaderMenu jsk-LinkFont jsk-LinkColor"><div class="jsk-MenuAdmin"><div><table cellpadding="0" cellspacing="0"><tbody><tr><td><div class="jskit-MenuTitle js-nsgecko">Admin</div></td><td><div style="background-image: url(//js-kit.com/images/menu/vertical-menu-expand-marker.png); background-repeat: no-repeat;" class="jskit-MenuTitleExpandMarker"></div></td></tr></tbody></table><div style="display: none;" class="jskit-MenuContainer jskit-MenuRootContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody><tr class="jskit-MenuItem"><td class="jskit-MenuItem"><div style="background-image: url(//js-kit.com/images/menu/key.png); background-repeat: no-repeat;" class="jskit-MenuItemIcon js-nsgecko"></div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemTitle js-nsgecko">Log In</div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemEnding js-nsgecko"></div><div style="display: none;" class="jskit-MenuContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody></tbody><tfoot></tfoot></table></div></td></tr><tr class="jskit-MenuItem"><td class="jskit-MenuItem"><div style="background-image: url(//js-kit.com/images/menu/user-edit.png); background-repeat: no-repeat;" class="jskit-MenuItemIcon js-nsgecko"></div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemTitle js-nsgecko">Edit My Profile</div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemEnding js-nsgecko"></div><div style="display: none;" class="jskit-MenuContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody></tbody><tfoot></tfoot></table></div></td></tr><tr><td colspan="3"><div class="jskit-MenuDelimeter"></div></td></tr><tr class="jskit-MenuItem jsk-DisabledFontColor"><td class="jskit-MenuItem"><div style="background-image: url(//js-kit.com/images/menu/comment-edit.png); background-repeat: no-repeat;" class="jskit-MenuItemIcon js-nsgecko jsk-DisabledFontColor"></div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemTitle js-nsgecko jsk-DisabledFontColor">Moderation</div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemEnding js-nsgecko jsk-DisabledFontColor"></div><div style="display: none;" class="jskit-MenuContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody></tbody><tfoot></tfoot></table></div></td></tr><tr class="jskit-MenuItem jsk-DisabledFontColor"><td class="jskit-MenuItem"><div style="background-image: url(//js-kit.com/images/menu/wrench.png); background-repeat: no-repeat;" class="jskit-MenuItemIcon js-nsgecko jsk-DisabledFontColor"></div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemTitle js-nsgecko jsk-DisabledFontColor">General Settings</div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemEnding js-nsgecko jsk-DisabledFontColor"></div><div style="display: none;" class="jskit-MenuContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody></tbody><tfoot></tfoot></table></div></td></tr><tr class="jskit-MenuItem jsk-DisabledFontColor"><td class="jskit-MenuItem"><div class="jskit-MenuItemIcon js-nsgecko jsk-DisabledFontColor"></div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemTitle js-nsgecko jsk-DisabledFontColor">Admin Notices</div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemEnding js-nsgecko jsk-DisabledFontColor"></div><div style="display: none;" class="jskit-MenuContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody></tbody><tfoot></tfoot></table></div></td></tr><tr><td colspan="3"><div class="jskit-MenuDelimeter"></div></td></tr><tr class="jskit-MenuItem"><td class="jskit-MenuItem"><div style="background-image: url(//js-kit.com/images/menu/script-code.png); background-repeat: no-repeat;" class="jskit-MenuItemIcon js-nsgecko"></div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemTitle js-nsgecko">Get this for your site</div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemEnding js-nsgecko"></div><div style="display: none;" class="jskit-MenuContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody></tbody><tfoot></tfoot></table></div></td></tr><tr class="jskit-MenuItem"><td class="jskit-MenuItem"><div style="background-image: url(//js-kit.com/images/menu/newspaper.png); background-repeat: no-repeat;" class="jskit-MenuItemIcon js-nsgecko"></div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemTitle js-nsgecko">JS-Kit Blog</div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemEnding js-nsgecko"></div><div style="display: none;" class="jskit-MenuContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody></tbody><tfoot></tfoot></table></div></td></tr><tr class="jskit-MenuItem"><td class="jskit-MenuItem"><div style="background-image: url(//js-kit.com/images/menu/twitter-favicon.png); background-repeat: no-repeat;" class="jskit-MenuItemIcon js-nsgecko"></div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemTitle js-nsgecko">JS-Kit on Twitter</div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemEnding js-nsgecko"></div><div style="display: none;" class="jskit-MenuContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody></tbody><tfoot></tfoot></table></div></td></tr><tr class="jskit-MenuItem"><td class="jskit-MenuItem"><div style="background-image: url(//js-kit.com/images/information.png); background-repeat: no-repeat;" class="jskit-MenuItemIcon js-nsgecko"></div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemTitle js-nsgecko">Help</div></td><td class="jskit-MenuItem"><div class="jskit-MenuItemEnding js-nsgecko"></div><div style="display: none;" class="jskit-MenuContainer"><table cellpadding="0" cellspacing="0"><thead></thead><tbody></tbody><tfoot></tfoot></table></div></td></tr></tbody><tfoot></tfoot></table></div></div></div></div><div style="clear: both;"></div></div><div class="jsk-ThreadWrapper jsk-PrimaryFont jsk-PrimaryBackgroundColor"><div style="display: none;" class="js-OldCommentsWrap jsk-StreamWrapper"><div class="js-OldComments"><div></div></div></div><div style="" class="js-PageNavBottom"></div><div class="js-poweredBy"><div class="js-poweredBy-wrapper"><a href="http://js-kit.com/"><div style="background-image: url(//js-kit.com/images/brand.png); background-repeat: no-repeat;" class="js-poweredBy-logo"></div><div class="js-poweredBy-text">Social Networking by </div><div class="js-kit-clear"></div></a></div><div class="js-kit-clear"></div></div></div><div class="js-LeaveComment"><div class="js-commentControl"><a href="javascript:void(0);">Leave a comment</a></div><div style="display: none;" class="js-commentControl js-commentTool"><font face="Webdings">@</font><a href="javascript:void(0);">Controls</a></div><br clear="all"></div></div><div style="height: 0pt;"><iframe id="jsk-ifrtr-c0" name="jsk-ifrtr-c0" src="lifeCycle_files/landing.html" style="border: medium none ;" frameborder="0" height="0" width="0"></iframe></div></div>
+    <script src="lifeCycle_files/comments.js"></script>
+</div>
+    <script language="JavaScript" src="lifeCycle_files/s_code_remote.js"></script><script language="JavaScript" src="lifeCycle_files/metrics_group1.js"></script></body></html>

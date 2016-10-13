@@ -1,0 +1,49 @@
+<html><head><title> Investment Calculator</title> 
+<link rel="stylesheet" href="nav_style.css" type="text/css"> </head>
+<body>
+
+
+
+
+<form method="post" onSubmit="return false;">
+<table>
+<tr><td>
+INITIAL INVESTMENT = </td><td><input type="text" size="10" name="ps" value="1000">
+</td></tr>
+<tr><td>
+MONTHLY INVESTMENT = </td><td><input type="text" size="7" name="ms" value="100">
+</td></tr>
+<tr><td>
+INTEREST RATE = </td><td><input type="text" size="4" name="rs" value="0.08">
+</td></tr>
+<tr><td>
+YEARS = </td><td><input type="text" size="4" name="ys" value="40">
+</td></tr>
+<tr><td>
+</table>
+<input type="button" value="CALCULATE BALANCE" 
+onClick="document.interest.setP(this.form.ps.value);
+document.interest.setM(this.form.ms.value);
+document.interest.setR(this.form.rs.value);
+document.interest.setY(this.form.ys.value);">
+</form>
+
+
+
+
+<applet name="interest"  code="Interest.class" width="420" height="230">
+<param name=pString value=1000> 
+<param name=mString value=100> 
+<param name=rString value=0.08> 
+<param name=yString value=40> 
+
+
+
+
+</applet>  
+<br>
+Java Applet by C.W.Coleman
+<br>
+<a href = "Interest.java">source</a>
+<//body>
+</html>

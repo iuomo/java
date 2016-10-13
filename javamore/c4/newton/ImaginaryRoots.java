@@ -1,0 +1,145 @@
+class DivideImaginary {
+	double den,rnum, inum;
+	DivideImaginary(double na,double nbi,double da, double dbi){
+			den = ((da*da)+(dbi*dbi));	
+		//	System.out.println("den  "+den);//trace
+			rnum = ((na*da) + (nbi*dbi))/den;
+			//rnum = ((na*da) + (nbi*dbi));
+			inum = ((na*(-1*dbi))+(nbi*da))/den;
+			//inum = ((na*(-1*dbi))+(nbi*da));
+		//	System.out.println("div rnum "+rnum+" inum"+inum);//trace
+		//	System.out.println("div a + bi results rnum "+rnum+" inum "+inum);//trace
+				}
+				
+			double a(){
+				return  rnum;
+			}
+				double b(){
+				return  inum;
+			}
+}
+
+class INewtonMethod {
+	int r; //double n; 
+	double val = 0;
+	int count = 0;
+	// radial y radican x
+	INewtonMethod (double a, double bi, int root, long limit){
+		double x0 = a;
+		double yi0 = bi;
+		int n = root;
+		double x1,yi1,na,nbi, da, dbi;
+		int i;
+		long x0long, y0ilong,x1long, y1ilong, longlimit = limit;
+		boolean done = false;
+		
+		while (!done){
+			// ipn represents the imaginary product numerator
+			// ipd represents the imaginary product denominator
+		//	System.out.println(" *******x0 "+x0+" yi0 "+yi0);//trace
+				Iproduct ipn = new Iproduct(x0,yi0,n);
+					na = ipn.avalue() - 1; nbi = ipn.bvalue(); 
+					
+				Iproduct ipd = new Iproduct(x0,yi0,n-1);
+				da = n* ipd.avalue(); dbi = n* ipd.bvalue(); 
+	//			System.out.println("before divide na "+na+" nbi "+nbi);//trace
+	//			 System.out.println("before divide da "+da+" dbi "+dbi);//trace
+					 
+					 DivideImaginary di = new DivideImaginary(na,nbi,da,dbi);
+					 	// x1 =  di.a(); yi1 =  di.b();
+				 x1 = x0 - di.a(); 
+				  yi1 = yi0 - di.b();
+				   System.out.println("after div x1 "+x1+" yi1 "+yi1);//trace
+					   
+					 //	//long x0long, y0ilong,x1long, y1ilong, longlimit = limit;
+					// System.out.println("longlimit "+longlimit);//trace
+		//			 System.out.println("count  "+count);//trace 
+						x0long = (long) (x0 * longlimit);		x1long= (long) (x1 * longlimit);
+						 y0ilong = (long) (yi0 * longlimit);		y1ilong= (long)( yi1 * longlimit);
+			//			 System.out.println("x0long "+x0long+" y0ilong "+y0ilong);//trace
+			//			 	 System.out.println("x1long "+x1long+" y1ilong "+y1ilong);//trace
+					
+						  count++;
+						 //|| (count > 1000000) 
+		if (((x0long == x1long) & (y0ilong == y1ilong)) )done = true;
+						 x0 = x1; yi0 = yi1;
+						
+						 
+		}
+	}
+		double value (){  
+				return count;
+		}
+}
+
+class Iproduct{
+	double return_a, return_b;
+	Iproduct (double a, double bi,int exp){
+		//System.out.println(a+" + "+bi+" i ^" + exp);
+		double a2,bi2,atmp,btmp;
+		int i;
+		if (exp == 1){
+			return_a = a; return_b = bi;
+		}else{
+			a2 = ((a*a) - (bi*bi));
+			bi2 = (2*a*bi);
+			//System.out.println(a2+" + "+bi2+" i ^ 2");
+			atmp = a2; btmp = bi2;
+			for (i = 1; i < (exp-1); i++){
+				// System.out.println(a2+" + "+bi2+" i loop before");
+				atmp =  ((a2*a) - (bi2*bi));
+				bi2 = ((a*bi2) + (a2*bi));
+				a2 = atmp;		
+				//System.out.println(a2+" + "+bi2+" i loop after");
+			}
+		
+			return_a = a2; return_b = bi2;
+			}
+		}
+		double avalue(){
+		  return return_a;
+		}
+		double bvalue(){
+		return return_b;
+		}
+}
+
+class ImaginaryRoots{
+public static void main (String args[]){
+double x, y;
+double x1,yi1;
+int h,k;
+
+
+for (h = -200; h <= 200; h ++ ){
+	for (k = -200; k <= 200; k++){
+	x =(double)h/100;
+	y =(double)k/100;
+//	System.out.println(h+" h+ "+y+" k ");
+//	System.out.println(x+" + "+y+" i ");
+
+	//	x = 0.3; y = 1.1; 
+		INewtonMethod n = new INewtonMethod(x,y,4,10000000000L);
+// INewtonMethod n = new INewtonMethod(1,1,4,1000L);
+}//end for h
+}//end for k
+}
+}
+
+/*
+ DivideImaginary di = new DivideImaginary(0.5,0.5,1,1);
+x1 =  di.a(); yi1 =  di.b();
+System.out.println(x1+" x1 + "+yi1+" yi1 ");	
+ DivideImaginary di1 = new DivideImaginary(0.5,0.5,-1,1);
+x1 =  di1.a(); yi1 =  di1.b();
+System.out.println(x1+" x1 + "+yi1+" yi1 ");	
+DivideImaginary di2 = new DivideImaginary(0.5,0.5,-1,-1);
+x1 =  di2.a(); yi1 =  di2.b();
+System.out.println(x1+" x1 + "+yi1+" yi1 ");	
+DivideImaginary di3 = new DivideImaginary(0.5,0.5,1,-1);
+x1 =  di3.a(); yi1 =  di3.b();
+System.out.println(x1+" x1 + "+yi1+" yi1 ");	
+
+*/
+
+

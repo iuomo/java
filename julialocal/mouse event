@@ -1,0 +1,10 @@
+ public void mouseMoved(MouseEvent me) {  
+    // show status  
+    //showStatus("Moving mouse at " + me.getX() + ", " + me.getY());  
+	 dX = (double)((me.getX()-401)/200);
+	 dY = (double)((me.getY()-401)/200);
+	 System.out.println(dX+ " , " +dY);
+	 //showStatus("Moving mouse at " + (double)((me.getX()-251)/125) + ", " + (double)((251- me.getY())/125));  
+	  showStatus("MANDELBROT " + dX + ", " +dY);  
+
+  }  

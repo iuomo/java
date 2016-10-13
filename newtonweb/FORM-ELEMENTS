@@ -1,0 +1,9 @@
+document.newton.setC1(this.form.c1.value);
+document.julia.setC2(this.form.c2.value);
+document.julia.setRED(this.form.red.value);
+document.julia.setGREEN(this.form.green.value);
+document.julia.setBLUE(this.form.blue.value);
+document.julia.setRADJ(this.form.redA.value);
+document.julia.setGADJ(this.form.greenA.value);
+document.julia.setBADJ(this.form.blueA.value);
+document.julia.setLIMIT(this.form.limit.value);

@@ -1,0 +1,46 @@
+import java.io.*;
+class ReturnWord{
+	
+	public String word(){
+	  char c;
+	 String w; 
+	  double dval;
+	   int j, val;
+	w ="";
+	for (j = 0; j < 3;j++){
+		    dval = Math.random();  
+		    dval = dval *26; 
+		    val = (int)dval+97;
+		    c = (char)val;
+		    w = w + c;
+	    }
+	    return w;
+}
+
+}
+
+
+class WordsClass1 {
+  public static void main(String args[]) { 
+	 
+	 String s = "aaa"; 
+	 String wo = "";
+	  int i, count = 0;
+	  boolean match;
+	  
+	  match = false;
+	  while (!match){
+		  //get word
+		  ReturnWord nw = new ReturnWord();   
+		  wo = nw.word();
+		  count++;
+		  System.out.print(wo+" - "+count+" - "); 
+		  if (wo.equals(s))
+		  	{ 
+				match = true;	
+			}
+		
+
+    }
+  } 
+}

@@ -1,0 +1,19 @@
+class CreateRandom {
+
+	public static void main (String yep[]){
+
+		double dval;
+		int ival, i= 0;
+		boolean done = false;
+		
+		while (!done){
+			dval = Math.random();
+			ival = (int) (Math.random()*10);		
+			System.out.println(dval+ "    "+ival);
+			i++;
+			if (i > 10) done = true;
+		}
+
+	}
+
+}

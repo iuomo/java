@@ -1,0 +1,41 @@
+import java.util.Date;
+import java.text.SimpleDateFormat;
+... ... ... ...
+ 
+    public void testConvertDateToString()    {
+ 
+        //   Allocates a Date object and initializes it so that it represents the time
+        // at which it was allocated, measured to the nearest millisecond.
+        Date dateNow = new Date ();
+ 
+        SimpleDateFormat dateformatYYYYMMDD = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat dateformatMMDDYYYY = new SimpleDateFormat("MMddyyyy");
+ 
+        StringBuilder nowYYYYMMDD = new StringBuilder( dateformatYYYYMMDD.format( dateNow ) );
+        StringBuilder nowMMDDYYYY = new StringBuilder( dateformatMMDDYYYY.format( dateNow ) );
+ 
+        System.out.println( "DEBUG: Today in YYYYMMDD: '" + nowYYYYMMDD + "'");
+        System.out.println( "DEBUG: Today in MMDDYYYY: '" + nowMMDDYYYY + "'");
+ 
+    }
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+... ... ... ...
+ 
+    public void testConvertDateToString()    {
+ 
+        //   Allocates a Date object and initializes it so that it represents the time
+        // at which it was allocated, measured to the nearest millisecond.
+        Date dateNow = new Date ();
+ 
+        SimpleDateFormat dateformatYYYYMMDD = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat dateformatMMDDYYYY = new SimpleDateFormat("MMddyyyy");
+ 
+        StringBuilder nowYYYYMMDD = new StringBuilder( dateformatYYYYMMDD.format( dateNow ) );
+        StringBuilder nowMMDDYYYY = new StringBuilder( dateformatMMDDYYYY.format( dateNow ) );
+ 
+        System.out.println( "DEBUG: Today in YYYYMMDD: '" + nowYYYYMMDD + "'");
+        System.out.println( "DEBUG: Today in MMDDYYYY: '" + nowMMDDYYYY + "'");
+ 
+    }

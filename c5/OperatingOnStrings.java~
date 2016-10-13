@@ -1,0 +1,20 @@
+class OperatingOnStrings {
+	public static void main (String args[]){
+		String str1 = new String("Java strings are objects.");
+		String str2 = "This is another string.";
+		String str3;
+		str3 = str2;
+		int idx;
+		System.out.println(str1);
+			System.out.println(str2);
+				System.out.println(str3);
+	
+					idx = str1.indexOf("s");
+							System.out.print("First index of ");
+					System.out.println(idx);
+					
+						idx = str1.lastIndexOf("s");
+								System.out.print("Last index of ");
+					System.out.println(idx);
+	}
+}

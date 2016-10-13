@@ -1,0 +1,73 @@
+<html><head><title> Newton's Method</title> 
+<link rel="stylesheet" href="nav_style.css" type="text/css">
+
+ </head>
+ <style>
+body {margin: 0; padding: 0;
+background-color: #ffffff;
+color:#000000;
+}
+#form {
+position:absolute;
+text-align: left;
+top: 10px;
+left: 1010px;
+z-index:0;
+font-family:"Arial","sans-serif";color:#000000;font-size:12px;
+}
+
+</style>
+ 
+ 
+<body>
+	<div class id = "form">
+Newton's Method
+<form method="post" onSubmit="return false;">
+COLOR START (0 TO 255)<br />
+red start:<input type="text" size="4" name="red" value="0"><br />
+green start:<input type="text" size="4" name="green" value="0"><br />
+blue start:<input type="text" size="4" name="blue" value="0"><br />
+<br />
+COLOR END (0 TO 255)<br />
+red end:<input type="text" size="4" name="redAjust" value="0"><br />
+green end:<input type="text" size="4" name="greenAjust" value="0"><br />
+blue end:<input type="text" size="4" name="blueAjust" value="0"><br />
+<br />
+SCALE AND LIMIT<br />
+limit:<input type="text" size="4" name="limit" value="10"><br />
+lcale:<input type="text" size="4" name="scale" value="10"><br />
+
+<input type="button" value="Newton's Method" 
+onClick="document.newton.setRED(this.form.red.value);
+document.newton.setGREEN(this.form.green.value);
+document.newton.setBLUE(this.form.blue.value);
+document.newton.setRADJ(this.form.redAjust.value);
+document.newton.setGADJ(this.form.greenAjust.value);
+document.newton.setBADJ(this.form.redAdjust.value);
+document.newton.setLIMIT(this.form.limit.value);
+document.newton.setSCALE(this.form.scale.value);"
+</form>
+
+</div>
+
+<applet name="newton"  code="Newton.class" width="1000" height="900">
+<param name=red value=255>
+<param name=green value=255>
+<param name=blue value=255>
+
+<param name=redA value=255>
+<param name=greenA value=20>
+<param name=blueA value=147>
+
+<param name=limit value=100>
+<param name=scale value=10>
+</applet>
+
+
+
+<hr>
+
+
+
+<//body>
+</html>

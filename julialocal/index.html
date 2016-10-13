@@ -1,0 +1,158 @@
+<html><head><title> Julia Set : Craig Coleman  </title> 
+<style>
+body {margin: 0; padding: 0;
+background-color: #cccccc;
+color:#000000;
+}
+font-family:"Arial","sans-serif";color:#700070;font-size:10px;}
+pre{margin: 0; padding: 0;font-family:"Arial","sans-serif";color:#71b9cf;font-size:10px;}
+tt{margin: 0; padding: 0;font-family:"Arial","sans-serif";color:#71b9cf;font-size:10px;}
+
+a{
+font-family:"Arial","sans-serif";
+font-size:12px;
+font-size:1em;
+color: #ff00ff;
+text-decoration:none;
+border-color: #c6e6db;
+border-style:solid;
+border-width:1px 0px 1px 0px; 
+
+}
+
+a:hover {
+font-family: arial, san-serif;
+font-size:12px;
+font-size:1em;
+color: #000000;
+background-color: #71b9cf;
+text-decoration:none;
+border-color: #c6e6db;
+border-style:solid;
+border-width:1px 0px 1px 0px; 
+}
+
+#imgLeft {
+position:absolute;
+top: 50px;
+left :0px;
+z-index:1;
+}
+
+#menu {
+position:absolute;
+text-align: left;
+top: 10px;
+left: 920px;
+z-index:0;
+font-family:"Arial","sans-serif";color:#000000;font-size:12px;
+}
+
+#contents {
+color:#f7fb87;
+background-color: #c6e6db;
+position:absolute;
+vertical-align: left;
+top: 10px;
+left:10px;
+width:800px;
+z-index:0;
+
+}
+#contents2 {
+background-color: #ffffff;
+background-image:url('img/whitecarbon.jpg');
+width: 80%;
+padding: 1em;
+color:#000000;
+border-color: #c6e6db;
+border-style:solid;
+border-width:0px 40px 0px 40px;
+z-index:0;
+}
+
+
+
+</style>
+
+ </head>
+<body>
+<div id = "menu">
+<pre>
+Julia Set : Java, html, js CWColeman
+<form method="post" onSubmit="return false;">
+r:<input type="text" size="3" name="red" value="20">
+g:<input type="text" size="3" name="green" value="20">
+b:<input type="text" size="3" name="blue" value="20">
+ra:<input type="text" size="3" name="redA" value="-10">
+ga:<input type="text" size="3" name="greenA" value="-20">
+ba:<input type="text" size="3" name="blueA" value="-30">
+c1:<input type="text" size="7" name="c1" value="-1.5">
+c2:<input type="text" size="7" name="c2" value="0">
+x:<input type="text" size="4" name="x" value="n/a">
+y:<input type="text" size="4" name="y" value="n/a">
+limit:<input type="text" size="3" name="limit" value="5">
+scale:<input type="text" size="10" name="scale" value="2000">
+
+<input type="button" value="Draw Julia Set" 
+onClick="document.julia.setC1(this.form.c1.value);
+document.julia.setC2(this.form.c2.value);
+document.julia.setRED(this.form.red.value);
+document.julia.setGREEN(this.form.green.value);
+document.julia.setBLUE(this.form.blue.value);
+document.julia.setRADJ(this.form.redA.value);
+document.julia.setGADJ(this.form.greenA.value);
+document.julia.setBADJ(this.form.blueA.value);
+document.julia.setLIMIT(this.form.limit.value);
+document.julia.setSCALE(this.form.scale.value);">
+</form>
+r = red
+g = green
+b = blue
+ra = red adjust
+ga = green adjust
+ba = adjust adjust
+scale = can range from 0 to n
+where n is an integer of any 
+length that Java can handle 
+which is 32 bits 
+2^ 32
+(about)-2 billion to +2 billion
+limit = limit of the modulated 
+recursive count.
+In simple terms this is the 
+number of times 
+f(z) = z^2 + c is increment 
+less than 4 in the 
+complez plane. 
+z and c are a+bi 
+where i is the 2nd root 
+of -1 of course
+
+God bless <a href = "http://en.wikipedia.org/wiki/Gaston_Julia target = "new">Gaston Julia</a>
+By the way I have met Benoit Mandelbrot 
+and discussed the relationship
+between the Julia Set and the Mandelbrot set.
+I was an epic momment in my life.
+
+</pre>
+</div>
+<div id = "contents">
+<!-------------------------------------------------------------------------->                      
+<applet name="julia"  code="Julia.class" width="900" height="810">
+<param name=c1String value=0.345> 
+<param name=c2String value=-.07> 
+<param name=red value=255> 
+<param name=green value=255> 
+<param name=blue value=0> 
+<param name=redA value=-1> 
+<param name=greenA value=-1> 
+<param name=blueA value=0> 
+<param name=limit value=50> 
+<param name=scale value=800> 
+</applet>   
+
+</div>
+
+<//body>
+</html>

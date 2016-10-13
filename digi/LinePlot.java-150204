@@ -1,0 +1,72 @@
+//code by CW Coleman
+import java.awt.*;
+import java.awt.event.*; 
+import javax.swing.*;
+
+class InputPoints {
+ 
+      public static void pairs(int x1) {
+     
+     }
+}
+
+
+
+public class LinePlot extends JFrame { 
+
+   public LinePlot()
+   {  
+      super( "Line Plot" );
+      setSize(800,600);  
+      setVisible( true );   
+      
+   }
+
+   public void paint( Graphics g)
+   {
+ 
+   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		// only change code below this line
+	   int x1, y, h, k, t;	
+	   int iRed, iGreen, iBlue, aiRed, aiGreen, aiBlue;//integer RGB
+	   double sRed, sGreen, sBlue;// double start RGB
+	   double eRed, eGreen, eBlue;// double end RGB
+	   double aRed, aGreen, aBlue;// ajust RGB
+	   x1 = 0;
+	System.out.println(x1);
+	iRed = 255;  iGreen = 0; iBlue = 180;	   
+	   g.setColor(new Color(x1,iGreen,x1));
+	   g.setColor(new Color(255,255,0));
+	   g.fillRect(0, 0, 800, 600);
+	   
+	iRed = 0;  iGreen = 0; iBlue = 255;	
+		g.setColor(new Color(iRed,iGreen,iBlue));
+		g.drawLine(0,0,800,600);
+	iRed = 255;  iGreen = 0; iBlue = 255;	
+		g.setColor(new Color(iRed,iGreen,iBlue));
+		g.drawLine(800,0,0,600);	
+		
+		
+		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+}
+
+  // execute application
+   public static void main( String args[] )
+   {	int cx1 = 0;
+	   
+   	cx1 = Integer.parseInt(args[0]);
+   	cx2 = Integer.parseInt(args[1]);
+   
+        
+      InputPoints.pairs(cx1);
+   	  
+   	   LinePlot myobject = new LinePlot();//change this
+	   	// adapter to handle only windowClosing event
+		myobject.addWindowListener(
+			new WindowAdapter() {
+				public void windowClosing( WindowEvent event )
+				{System.exit( 0 );}
+			}  // end anonymous inner class
+		); // end call to addWindowListener
+   }
+}// end class Painter

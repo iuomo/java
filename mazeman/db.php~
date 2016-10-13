@@ -1,0 +1,13 @@
+<?php
+   $hostName = "localhost";
+   $databaseName = "enterprise";
+   $username = "root";
+   $password = "gbp1313";
+
+   function clean($input, $maxlength)
+   {
+      $input = substr($input, 0, $maxlength);
+      $input = EscapeShellCmd($input);
+      return ($input);
+   }
+?>

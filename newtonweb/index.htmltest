@@ -1,0 +1,87 @@
+<html><head><title> Newton's Method : Craig Coleman  </title> 
+<style>
+body {margin: 0; padding: 0;
+background-color: #ffffff;
+color:#0000ff;
+}
+#menu{
+position:absolute;
+top: 100px;
+left: 1020px;
+z-index:0;
+font-family:"Arial","sans-serif";color:#0000ff;font-size:18px;
+}
+
+</style>
+
+ </head>
+<body>
+
+<div id="menu">
+<form method="post" onSubmit="return false;">
+red start:<input type="text" size="3" name="red" value="255"> <br />
+green start:<input type="text" size="3" name="green" value="255"><br />
+blue start:<input type="text" size="3" name="blue" value="255"><br />
+red end:<input type="text" size="3" name="redA" value="-10"><br />
+green end:<input type="text" size="3" name="greenA" value="-15"><br />
+blue end:<input type="text" size="3" name="blueA" value="-20"><br />
+c:<input type="text" size="7" name="c1" value="0.345"><br />
+ci:<input type="text" size="7" name="c2" value="0.565"><br />
+
+limit:<input type="text" size="3" name="limit" value="10"><br />
+scale:<input type="text" size="10" name="scale" value="200"><br />
+
+<input type="button" value="Draw Newton's Method" 
+onClick="document.newton.setSCALE(this.form.scale.value);">
+</form>
+
+
+<form method="post" onSubmit="return false;">
+r:<input type="text" size="3" name="red" value="255">
+g:<input type="text" size="3" name="green" value="255">
+b:<input type="text" size="3" name="blue" value="255">
+ra:<input type="text" size="3" name="redA" value="-10">
+ga:<input type="text" size="3" name="greenA" value="-15">
+ba:<input type="text" size="3" name="blueA" value="-20">
+c:<input type="text" size="7" name="c1" value="0.345">
+ci:<input type="text" size="7" name="c2" value="0.565">
+
+limit:<input type="text" size="3" name="limit" value="10">
+scale:<input type="text" size="10" name="scale" value="200">
+
+<input type="button" value="Draw Julia Set" 
+onClick="document.julia.setSCALE(this.form.scale.value);">
+</form>
+
+</div>
+<!-------------------------------------------------------------------------->                      
+<applet name ="newton" code="Newton.class" width=1000 height=900>
+<param name=red value=0>
+<param name=green value=100>
+<param name=blue value=0>
+
+<param name=redA value=127>
+<param name=greenA value=0>
+<param name=blueA value=100>
+
+<param name=limit value=50>
+<param name=scale value=10>
+</applet>
+
+<hr />
+<applet name="julia"  code="Julia.class" width="900" height="810">
+<param name=c1String value=0.345> 
+<param name=c2String value=0.565> 
+<param name=red value=255> 
+<param name=green value=255> 
+<param name=blue value=255> 
+<param name=redA value=-10> 
+<param name=greenA value=-15> 
+<param name=blueA value=-20> 
+<param name=limit value=10> 
+<param name=scale value=200> 
+</applet>   
+
+</div>
+</body>
+</html>

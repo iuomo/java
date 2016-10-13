@@ -1,0 +1,26 @@
+class QuestionIf {
+	public static void main (String args[]) throws java.io.IOException {
+		char chinput;
+		
+		for (;;){
+			//inkey
+							System.out.println("What is an endian?");
+							System.out.println("A. The byte order of an integer.");
+							System.out.println("B.  Is there a big, middle and little endian?");
+							System.out.println("C. Does this have anything to do with unicode?");
+							System.out.println("D. I'll ask http://en.wikipedia.org");
+			do {
+				chinput = (char) System.in.read();
+			}while ((chinput == '\n') | (chinput == '\r'));
+			//end in key
+	
+			if (chinput == '.'){break;}
+			else if (chinput == 'A'){ 	System.out.print("YEP!");}
+				else if (chinput == 'B'){ 	System.out.print("THERE IS A BIG, MIDDLE, AND LITTLE.");}
+			else if (chinput == 'C'){ 	System.out.print("YES IS DOES.");}
+			else if (chinput == 'D'){ 	System.out.print("THAT'S WHERE I WENT");}
+			else { 	System.out.print("BYE BYE NOW");}
+		
+	}//end for
+}
+}

@@ -1,0 +1,35 @@
+
+
+class LongDiv {
+	LongDiv ( long dividend,long divisor, int precision){
+	String number = "";
+	long quotient = 0L;
+	int i,j;
+	int count = 1;
+	System.out.println (dividend+" / "+divisor+ " = ");
+	
+	System.out.print (".");
+	dividend = dividend *10L;
+	for (i = 0; i < precision; i ++){
+		quotient = (int) (dividend / divisor); 
+		dividend = (dividend - (quotient * divisor))*10L;
+		System.out.print (quotient);
+		number = ""+quotient;
+		count ++;
+	}
+	}
+	
+	}
+
+class DoLongDiv {
+	public static void main (String args[]){
+	int cols = 100;
+		LongDiv q2 = new LongDiv (1,89,cols);
+		System.out.println (); 
+			LongDiv q3 = new LongDiv (1,97,200);
+			System.out.println (); 
+		
+}
+}
+	                  
+

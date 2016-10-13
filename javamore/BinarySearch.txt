@@ -1,0 +1,23 @@
+class BinarySearch{
+	public static int results(String keyWord,String dlist[],int dictionarylength){
+		int first= 0;
+		int last = dictionarylength;
+		int upto = last;
+		int mid = (first + last) / 2;
+		int count = 0;
+		while (first < upto) {
+			System.out.println(count + "compare count");
+			mid = (first + upto) / 2;  // Compute mid point.
+			if (keyWord.compareTo(dlist[mid]) < 0) {
+				count++;
+				upto = mid;     // repeat search in bottom half.
+				} else if (keyWord.compareTo(dlist[mid]) > 0) {
+					count++;
+					first = mid + 1;  // Repeat search in top half.
+				} else {
+					return mid;     // Found it. return position
+				}
+			}
+		return -(first + 1);    // Failed to find key
+	}//end method
+	}

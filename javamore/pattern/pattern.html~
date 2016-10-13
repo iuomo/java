@@ -1,0 +1,27 @@
+<html><head><title> applet test  </title> 
+
+ </head>
+<body>
+<tt>
+<form method="post" onSubmit="return false;">
+red:<input type="text" size="4" name="red" value="10">&nbsp;
+green:<input type="text" size="4" name="green" value="20">&nbsp;
+blue:<input type="text" size="4" name="blue" value="30">&nbsp;
+
+<input type="button" value="draw " onClick="document.pattern.setRED(this.form.red.value);
+document.pattern.setGREEN(this.form.green.value);
+document.pattern.setBLUE(this.form.blue.value);">
+</form>
+
+</tt>
+<applet name="pattern" code="Pattern.class" width="1200" height="1000">
+<param name=red value=10> 
+<param name=green value=30> 
+<param name=blue value=50> 
+
+</applet>  
+
+
+
+<//body>
+</html>

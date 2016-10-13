@@ -1,0 +1,25 @@
+  <html><head></head>
+  <script language="JavaScript">
+  function pass()
+  {
+    document.tstapp.put(document.a.in0.value);
+    document.a.out0.value = document.tstapp.get();
+  }
+ 
+  </script>
+<body>
+	applet
+  <applet name="tstapp" code="TestApp.class"  WIDTH=100 HEIGHT=30>
+  </applet>
+  form
+  <form name=a action="x.htm">
+  <input type=text name=in0>
+  <input type=text name=out0>
+  <input type=button value="Try" onClick="pass();">
+  </form>
+  </body>
+  
+  
+  
+  
+</html>

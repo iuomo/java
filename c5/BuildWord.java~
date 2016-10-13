@@ -1,0 +1,22 @@
+class BuildWord {
+	public static void main (String input[]){
+		String list[] = new String[26];
+		list[0] = "AAA";
+		list[1] = "BBB";
+			String str1 = new String ("MAKE A 3 LETTER RANDOM WORD");
+			String str2 = "***************************";
+			String word = new String("");
+			char c1,c2,c3;
+			int compare;
+			for (;;){
+				word = "";
+				c1 = (char)(Math.random()*26 + 65);
+				c2 = (char)(Math.random()*26 + 65);
+				c3 = (char)(Math.random()*26 + 65);
+		
+				word = word + c1 + c2 + c3;
+					
+			}
+			System.out.println(word);
+	}
+}

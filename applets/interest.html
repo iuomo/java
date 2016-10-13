@@ -1,0 +1,35 @@
+<html><head><title> test form  </title> 
+<link rel="stylesheet" href="nav_style.css" type="text/css">
+
+ </head>
+<body>
+
+<form method="post" onSubmit="return false;">
+INITIAL INVESTMENT:<input type="text" size="10" name="c1" value="0">&nbsp;<br>
+INTEREST (INPUT AS A DECIMAL):<input type="text" size="5" name="c2" value="0">&nbsp;N<br>
+MONTHLY INVESTMENT:<input type="text" size="4" name="redAjust" value="0">&nbsp;<br>
+YEARS OF INVESTMENT:<input type="text" size="4" name="greenAjust" value="0">&nbsp;<br>
+
+
+<input type="button" value="CALCULATE ENDING BALANCE" 
+onClick="document.julia.setC1(this.form.c1.value);
+document.julia.setC2(this.form.c2.value);
+document.julia.setREDajust(this.form.redAjust.value);
+document.julia.setGREENajust(this.form.greenAjust.value);
+document.julia.setBLUEajust(this.form.blueAjust.value);">
+</form>
+
+
+<applet name="Invest"  code="InvestInterest.class" width="650" height="500">
+<applet code="InvestInterest.class" width= 600 height=500> 
+<param name=principal value=1000> 
+<param name=rate value=0.08> 
+<param name=month_invest value=100> 
+<param name=years value=10> 
+</applet>  
+
+
+
+
+<//body>
+</html>

@@ -1,0 +1,44 @@
+<html><head><title> Julia Set : Craig Coleman  </title> 
+<body>
+<form method="post" onSubmit="return false;">
+r:<input type="text" size="3" name="red" value="255">
+g:<input type="text" size="3" name="green" value="255">
+b:<input type="text" size="3" name="blue" value="255">
+ra:<input type="text" size="3" name="redA" value="-10">
+ga:<input type="text" size="3" name="greenA" value="-15">
+ba:<input type="text" size="3" name="blueA" value="-20">
+c:<input type="text" size="7" name="c1" value="0.345">
+ci:<input type="text" size="7" name="c2" value="0.565">
+
+limit:<input type="text" size="3" name="limit" value="10">
+scale:<input type="text" size="10" name="scale" value="200">
+
+<input type="button" value="Draw Julia Set" 
+onClick="document.julia.setC1(this.form.c1.value);
+document.julia.setC2(this.form.c2.value);
+document.julia.setRED(this.form.red.value);
+document.julia.setGREEN(this.form.green.value);
+document.julia.setBLUE(this.form.blue.value);
+document.julia.setRADJ(this.form.redA.value);
+document.julia.setGADJ(this.form.greenA.value);
+document.julia.setBADJ(this.form.blueA.value);
+document.julia.setLIMIT(this.form.limit.value);
+document.julia.setSCALE(this.form.scale.value);">
+</form>
+
+<!-------------------------------------------------------------------------->                      
+<applet name="julia"  code="Julia.class" width="900" height="810">
+<param name=c1String value=0.345> 
+<param name=c2String value=0.565> 
+<param name=red value=255> 
+<param name=green value=255> 
+<param name=blue value=255> 
+<param name=redA value=-10> 
+<param name=greenA value=-15> 
+<param name=blueA value=-20> 
+<param name=limit value=10> 
+<param name=scale value=200> 
+</applet>   
+
+<//body>
+</html>

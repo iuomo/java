@@ -1,0 +1,73 @@
+<html><head><title> Investment Calculator</title> 
+<link rel="stylesheet" href="nav_style.css" type="text/css"> </head>
+<body>
+
+
+
+
+<form method="post" onSubmit="return false;">
+<table>
+<tr><td>
+INITIAL INVESTMENT = </td><td><input type="text" size="10" name="ps" value="1000">
+</td></tr>
+<tr><td>
+MONTHLY INVESTMENT = </td><td><input type="text" size="7" name="ms" value="100">
+</td></tr>
+<tr><td>
+INTEREST RATE = </td><td><input type="text" size="4" name="rs" value="0.08">
+</td></tr>
+<tr><td>
+YEARS = </td><td><input type="text" size="4" name="ys" value="40">
+</td></tr>
+<tr><td>
+</table>
+<input type="button" value="CALCULATE BALANCE" 
+onClick="document.interest.setP(this.form.ps.value);
+document.interest.setM(this.form.ms.value);
+document.interest.setR(this.form.rs.value);
+document.interest.setY(this.form.ys.value);">
+</form>
+
+
+
+
+<applet name="interest"  code="InterestOld.class" width="420" height="230">
+<param name=pString value=1000> 
+<param name=mString value=100> 
+<param name=rString value=0.08> 
+<param name=yString value=40> 
+</applet>  
+<br>
+<h6>
+Click the "CALCULATE ENDING BALANCE AFTER n YEARS" button to
+calculate the investment balance after a given number of years 
+with an estimated rate of return.  The interest rate needs to 
+be inputted as a decimal.
+<font color = "darkgray">
+
+
+This program calculates the ending balance based on 
+an initial investment for a given number of years and
+a monthly investment of a given amount.
+The algorithm also supports monthly investments of zero (0).
+This is useful when determining the growth of a single investment deposit. 
+Interest is compounded monthly but reported yearly.
+The interest rate would be an estimated rate of return.
+This rate would vary depending on the type of the investment and
+the state of the stock market if the investment is related to 
+the stock market.
+
+
+The monthly investment would be the amount of money invested each month.
+A common term to describe this type of investing is "dollar cost averaging".
+This is one good way to minimize risk in investing.  Do a Google search with
+"dollar cost average" and you'll get about 23,000,000 hits.
+<h6>
+Investment Calculator coded by C.W.Coleman compiled with Java 1.3 
+javac *.java --deprecation
+
+
+<br>
+<a href = "InterestOld.java">source</a>
+<//body>
+</html>
